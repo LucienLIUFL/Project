@@ -44,5 +44,3 @@ config:
 	@echo "filename = sys.argv[1];">> ./pys/Remove.py
 	@echo "os.remove(\"src/\" + filename + \".h\");">> ./pys/Remove.py
 	@echo "os.remove(\"src/\" + filename + \".cpp\");">> ./pys/Remove.py
-show:
-	ls
