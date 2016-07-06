@@ -4,7 +4,8 @@ DIR_BIN = ./bin
 DIR_INC = ./inc
 
 COMPILER = g++ -std=c++11
-COMPILER_OP = -g -Wall 
+GC_FRAMEWORK = -framework OpenGL -framework GLUT -framework Foundation
+COMPILER_OP = -g -Wall -Wno-deprecated
 
 
 SRC = ${wildcard ${DIR_SRC}/*.cpp}
@@ -12,7 +13,7 @@ OBJ = ${patsubst %.cpp, ${DIR_OBJ}/%.o, ${notdir ${SRC}}}
 BIN = ${DIR_BIN}/Main
 
 ${BIN}: ${OBJ}
-	${COMPILER} ${COMPILER_OP}  ${OBJ} -o $@
+	${COMPILER} ${COMPILER_OP} ${GC_FRAMEWORK} ${OBJ} -o $@
 ${DIR_OBJ}/%.o: ${DIR_SRC}/%.cpp
 	${COMPILER} ${COMPILER_OP} -c $< -o $@
 clean:
@@ -43,3 +44,5 @@ config:
 	@echo "filename = sys.argv[1];">> ./pys/Remove.py
 	@echo "os.remove(\"src/\" + filename + \".h\");">> ./pys/Remove.py
 	@echo "os.remove(\"src/\" + filename + \".cpp\");">> ./pys/Remove.py
+show:
+	ls
