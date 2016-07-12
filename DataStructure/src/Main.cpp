@@ -1,14 +1,13 @@
 #include <iostream>
 
-#include "Vector.h"
-
-void func(int a) {
-    std::cout << a << std::endl;
-}
+#include "SalesData.h"
 
 int main(int argc, char const * argv[]) {
-    Maples::Vector v;
-    v.append(1);
-    v.traverse(func);
+    SalesData a;
+    SalesData b("Maples", std::vector<int>(1, 10), 1);
+    a.get();
+    b.get();
+    SalesData c(b);
+    c.get();
     return 0;
 }
