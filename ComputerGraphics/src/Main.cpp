@@ -1,24 +1,29 @@
 #include <iostream>
-
+#include <functional>
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 
-void display()
- {
-    glClear(GL_COLOR_BUFFER_BIT);
-    glBegin(GL_POLYGON);
-        glVertex2f(-0.5, -0.5);
-        glVertex2f(-0.5, 0.5);
-        glVertex2f(0.5, 0.5);
-        glVertex2f(0.5, -0.5);
-    glEnd();
-    glFlush();
+#include "GraphicsLib.h"
+
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 0.0);
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0.0, 200, 0.0, 200);
 }
-int main(int argc, char ** argv)
-{
+
+void display() {
+    GraphicsLib drawer;
+    drawer.drawStar();
+}
+
+int main(int argc, char ** argv) {
     glutInit(&argc, argv);
-    glutCreateWindow("Demo");
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(400, 300);
+    glutCreateWindow("Graphics");
+
+    init();
     glutDisplayFunc(display);
     glutMainLoop();
     return 0;
