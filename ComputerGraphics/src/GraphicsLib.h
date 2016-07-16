@@ -7,8 +7,8 @@ public:
     virtual ~GraphicsLib() = default;
 
     void drawStar();
-private:
-    void generatePoints();
+// private:
+    void generatePoints(int n, double extend);
 };
 
 #endif

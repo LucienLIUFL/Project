@@ -1,5 +1,7 @@
 #include "GraphicsLib.h"
 
+#include <cmath>
+#include <iostream>
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 
@@ -16,6 +18,22 @@ void GraphicsLib::drawStar() {
     glFlush();
 }
 
-void GraphicsLib::generatePoints() {
+void GraphicsLib::generatePoints(int n, double extend) {
+    double angle = (360.0 / n);
+    double x = 100, y = 100;
 
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0.0, 0.4, 0.2);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(x, y);
+    for (int i = 0; i < 2; ++i) {
+        std::cout << (i * angle) << std::endl;
+        x += (extend * sin(i * angle));
+        y += (extend * cos(i * angle));
+        std::cout << x << " " << std::ends;
+        std::cout << y << std::endl;
+        glVertex2f(x, y);
+    }
+    glEnd();
+    glFlush();
 }

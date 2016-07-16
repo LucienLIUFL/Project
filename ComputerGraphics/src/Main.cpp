@@ -14,7 +14,8 @@ void init() {
 
 void display() {
     GraphicsLib drawer;
-    drawer.drawStar();
+    // drawer.drawStar();
+    drawer.generatePoints(6, 50.0);
 }
 
 int main(int argc, char ** argv) {
