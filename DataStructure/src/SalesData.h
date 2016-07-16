@@ -3,18 +3,21 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 class SalesData {
 public:
-    SalesData() = default;
-    SalesData(const std::string & name, const std::vector<int> array, int index):
-              name(name), array(array), index(index) {}
+    SalesData();
+    SalesData(const std::string & name, const std::vector<int> array, int index);
 
     void get() const;
+    std::unique_ptr<std::string> pstr;
 private:
     std::string name;
     std::vector<int> array;
     int index;
+
+
 };
 
 #endif

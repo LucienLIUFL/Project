@@ -18,7 +18,7 @@ void display()
 int main(int argc, char ** argv)
 {
     glutInit(&argc, argv);
-    glutCreateWindow("Xcode Glut Demo");
+    glutCreateWindow("Demo");
     glutDisplayFunc(display);
     glutMainLoop();
     return 0;
