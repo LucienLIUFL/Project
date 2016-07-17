@@ -15,7 +15,7 @@ void init() {
 void display() {
     GraphicsLib drawer;
     // drawer.drawStar();
-    drawer.generatePoints(6, 50.0);
+    drawer.drawCycle(16, 20.0);
 }
 
 int main(int argc, char ** argv) {

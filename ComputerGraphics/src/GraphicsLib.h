@@ -8,7 +8,7 @@ public:
 
     void drawStar();
 // private:
-    void generatePoints(int n, double extend);
+    void drawCycle(int n, double extend);
 };
 
 #endif
