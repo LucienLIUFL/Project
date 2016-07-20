@@ -5,10 +5,12 @@ class GraphicsLib {
 public:
     GraphicsLib() = default;
     virtual ~GraphicsLib() = default;
-
-    void drawStar();
+    // void drawStar();
+    // void drawCycle(int n, double extend);
+    static void reSizeGLScene(int width, int height);
+    static bool initGL();
+    static void drawGLScene();
 // private:
-    void drawCycle(int n, double extend);
 };
 
 #endif
