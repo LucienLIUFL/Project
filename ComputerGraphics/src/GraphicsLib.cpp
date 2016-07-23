@@ -141,7 +141,7 @@ void GraphicsLib::drawGLScene() {
         glVertex3f(-1.0f, 1.0f,-1.0f);
         glVertex3f(-1.0f,-1.0f,-1.0f);
         glVertex3f(-1.0f,-1.0f, 1.0f);
-        
+
         glColor3f(1.0f,0.0f,1.0f);						// Set The Color To Violet
         glVertex3f( 1.0f, 1.0f,-1.0f);					// Right
         glVertex3f( 1.0f, 1.0f, 1.0f);
@@ -153,7 +153,7 @@ void GraphicsLib::drawGLScene() {
 }
 
 void GraphicsLib::spin() {
-    angle += 2.0f;
+    angle += 1.0f;
     if (angle > 360.0) {
         angle -= 360.0;
     }
