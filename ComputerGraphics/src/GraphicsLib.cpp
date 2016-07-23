@@ -1,5 +1,5 @@
 #include "GraphicsLib.h"
-
+#include <thread>
 #include <cmath>
 #include <iostream>
 #include <GLUT/glut.h>
@@ -35,6 +35,8 @@
 //     glFlush();
 // }
 
+float angle = 0.0f;
+
 void GraphicsLib::reSizeGLScene(int width, int height) {
     if (0 == height) {
         height = 1;
@@ -64,25 +66,96 @@ void GraphicsLib::drawGLScene() {
     glLoadIdentity();
 
     glTranslatef(-1.5f, 0.0f, -10.0f);
+
+    glRotatef(angle, 1.0f, 1.0f, 0.0f);
     glBegin(GL_TRIANGLES);
         glColor3f(1.0f, 0.0f, 0.0f);
         glVertex3f(0.0f, 1.0f, 0.0f);
 
         glColor3f(0.0f, 1.0f, 0.0f);
-        glVertex3f(-1.0f, -1.0f, 0.0f);
+        glVertex3f(-1.0f, -1.0f, 1.0f);
 
         glColor3f(0.0f, 0.0f, 1.0f);
-        glVertex3f(1.0f, -1.0f, 0.0f);
+        glVertex3f(1.0f, -1.0f, 1.0f); // Front
+
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex3f(0.0f, 1.0f, 0.0f);
+
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex3f(1.0f, -1.0f, 1.0f);
+
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex3f(1.0f, -1.0f, -1.0f); // right
+
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex3f(0.0f, 1.0f, 0.0f);
+
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex3f(1.0f, -1.0f, -1.0f);
+
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex3f(-1.0f, -1.0f, -1.0f); // back
+
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex3f(0.0f, 1.0f, 0.0f);
+
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex3f(-1.0f, -1.0f, -1.0f);
+
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex3f(-1.0f, -1.0f, 1.0f); // left
     glEnd();
 
-    glTranslatef(3.0f, 0.0f, 0.0f);
+    glLoadIdentity();
+    glTranslatef(3.0f, 0.0f, -10.0f);
 
+    glRotatef(angle, 1.0f, 1.0f, 1.0f);
     glColor3f(0.5f, 0.5f, 1.0f);
     glBegin(GL_QUADS);
-        glVertex3f(-1.0f, 1.0f, 0.0f);
-        glVertex3f(1.0f, 1.0f, 0.0f);
-        glVertex3f(1.0f, -1.0f, 0.0f);
-        glVertex3f(-1.0f, -1.0f, 0.0f);
+        glColor3f(0.0f,1.0f,0.0f);						// Set The Color To Blue
+        glVertex3f( 1.0f, 1.0f,-1.0f);					// Top
+        glVertex3f(-1.0f, 1.0f,-1.0f);
+        glVertex3f(-1.0f, 1.0f, 1.0f);
+        glVertex3f( 1.0f, 1.0f, 1.0f);
+
+        glColor3f(1.0f,0.5f,0.0f);						// Set The Color To Orange
+        glVertex3f( 1.0f,-1.0f, 1.0f);					// Bottom
+        glVertex3f(-1.0f,-1.0f, 1.0f);
+        glVertex3f(-1.0f,-1.0f,-1.0f);
+        glVertex3f( 1.0f,-1.0f,-1.0f);
+
+        glColor3f(1.0f,0.0f,0.0f);						// Set The Color To Red
+        glVertex3f( 1.0f, 1.0f, 1.0f);					// Front
+        glVertex3f(-1.0f, 1.0f, 1.0f);
+        glVertex3f(-1.0f,-1.0f, 1.0f);
+        glVertex3f( 1.0f,-1.0f, 1.0f);
+
+        glColor3f(1.0f,1.0f,0.0f);						// Set The Color To Yellow
+        glVertex3f( 1.0f,-1.0f,-1.0f);					// Back
+        glVertex3f(-1.0f,-1.0f,-1.0f);
+        glVertex3f(-1.0f, 1.0f,-1.0f);
+        glVertex3f( 1.0f, 1.0f,-1.0f);
+
+        glColor3f(0.0f,0.0f,1.0f);						// Set The Color To Blue
+        glVertex3f(-1.0f, 1.0f, 1.0f);					// Left
+        glVertex3f(-1.0f, 1.0f,-1.0f);
+        glVertex3f(-1.0f,-1.0f,-1.0f);
+        glVertex3f(-1.0f,-1.0f, 1.0f);
+        
+        glColor3f(1.0f,0.0f,1.0f);						// Set The Color To Violet
+        glVertex3f( 1.0f, 1.0f,-1.0f);					// Right
+        glVertex3f( 1.0f, 1.0f, 1.0f);
+        glVertex3f( 1.0f,-1.0f, 1.0f);
+        glVertex3f( 1.0f,-1.0f,-1.0f);
     glEnd();
-    glFlush();
+    // glFlush();
+    glutSwapBuffers();
+}
+
+void GraphicsLib::spin() {
+    angle += 2.0f;
+    if (angle > 360.0) {
+        angle -= 360.0;
+    }
+    glutPostRedisplay();
 }

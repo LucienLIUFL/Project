@@ -10,6 +10,7 @@ public:
     static void reSizeGLScene(int width, int height);
     static bool initGL();
     static void drawGLScene();
+    static void spin();
 // private:
 };
 
