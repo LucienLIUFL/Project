@@ -5,13 +5,14 @@ class GraphicsLib {
 public:
     GraphicsLib() = default;
     virtual ~GraphicsLib() = default;
-    // void drawStar();
-    // void drawCycle(int n, double extend);
+
     static void reSizeGLScene(int width, int height);
     static bool initGL();
-    static void drawGLScene();
+    static void display();
     static void spin();
-// private:
+private:
+    static void drawTriangle();
+    static void drawQuads();
 };
 
 #endif
