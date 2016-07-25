@@ -1,7 +1,10 @@
 #include "GraphicsLib.h"
-#include <thread>
 #include <cmath>
 #include <iostream>
+
+#include <cstdio>
+#include <cstdlib>
+
 #include <GLUT/glut.h>
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
@@ -41,14 +44,13 @@ void GraphicsLib::display() {
 
     glTranslatef(-1.5f, 0.0f, -10.0f);
     drawTriangle();
-
     glLoadIdentity();
 
-    glTranslatef(3.0f, 0.0f, -10.0f);
+    glTranslatef(1.5f, 0.0f, -10.0f);
     drawQuads();
-    
+    glLoadIdentity();
+
     glFlush();
-    // glutSwapBuffers();
 }
 
 void GraphicsLib::spin() {
@@ -152,4 +154,8 @@ void GraphicsLib::drawQuads() {
         glVertex3f( 1.0f,-1.0f, 1.0f);
         glVertex3f( 1.0f,-1.0f,-1.0f);
     glEnd();
+}
+
+void GraphicsLib::drawTexture() {
+
 }

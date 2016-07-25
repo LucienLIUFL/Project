@@ -13,6 +13,8 @@ public:
 private:
     static void drawTriangle();
     static void drawQuads();
+
+    static void drawTexture();
 };
 
 #endif
