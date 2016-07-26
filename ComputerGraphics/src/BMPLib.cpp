@@ -33,9 +33,12 @@ std::shared_ptr<BMPLib::BmpInfo> BMPLib::makeBmpInfo(const std::string & filenam
     BMPLib::Bmp bmp;
     fseek(file, 0, 0);
     fread(&bmp, sizeof(BMPLib::Bmp), 1, file);
-    bmpInfo->imageData = new unsigned char[bmp.biSizeImage];
+    int tempSize = bmp.biWidth * bmp.biHeight * 4;
+    // bmpInfo->imageData = new unsigned char[bmp.biSizeImage];
+    bmpInfo->imageData = new unsigned char[tempSize];
     fseek(file, (long)bmp.bfOffBits, 0);
-    fread(bmpInfo->imageData, sizeof(unsigned char), bmp.biSizeImage, file);
+    // fread(bmpInfo->imageData, sizeof(unsigned char), bmp.biSizeImage, file);
+    fread(bmpInfo->imageData, sizeof(unsigned char), tempSize, file);
     fclose(file);
 
     bmpInfo->bmp = bmp;

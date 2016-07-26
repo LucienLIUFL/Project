@@ -209,17 +209,17 @@ void GraphicsLib::drawTexture() {
 bool GraphicsLib::loadGLTextures() {
     bool returnValue = false;
     std::shared_ptr<BMPLib::BmpInfo> pBmpInfo;
-    pBmpInfo = BMPLib::makeBmpInfo("data/1.bmp");
+    pBmpInfo = BMPLib::makeBmpInfo("data/Crate.bmp");
     if (pBmpInfo) {
         returnValue = true;
         glGenTextures(1, &texture[0]);
 
         glBindTexture(GL_TEXTURE_2D, texture[0]);
         glTexImage2D(
-            GL_TEXTURE_2D, 0, 3,
+            GL_TEXTURE_2D, 0, GL_RGB,
             pBmpInfo->bmp.biWidth,
             pBmpInfo->bmp.biHeight,
-            0, GL_RGB, GL_UNSIGNED_BYTE,
+            0, GL_BGR, GL_UNSIGNED_BYTE,
             pBmpInfo->imageData
         );
         glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
