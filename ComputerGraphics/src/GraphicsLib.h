@@ -9,11 +9,12 @@ public:
     static void reSizeGLScene(int width, int height);
     static bool initGL();
     static void display();
-    static void spin();
+    static void translate();
 private:
+    static bool loadGLTextures();
+
     static void drawTriangle();
     static void drawQuads();
-
     static void drawTexture();
 };
 

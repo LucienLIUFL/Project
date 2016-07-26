@@ -9,11 +9,10 @@ int main(int argc, char * argv[]) {
     glutCreateWindow("Graphics");
 
     GraphicsLib::reSizeGLScene(4, 3);
-    GraphicsLib::initGL();
-
-    glutDisplayFunc(GraphicsLib::display);
-    glutIdleFunc(GraphicsLib::spin);
-
-    glutMainLoop();
+    if (GraphicsLib::initGL()) {
+        glutDisplayFunc(GraphicsLib::display);
+        glutIdleFunc(GraphicsLib::translate);
+        glutMainLoop();
+    }
     return 0;
 }

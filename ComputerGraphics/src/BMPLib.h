@@ -5,6 +5,7 @@
 
 
 namespace BMPLib {
+    #pragma pack(push, 1)
     struct Bmp {
         // 14 Bytes (BMP File Header)
         unsigned short bfType; // Label of BMP file
@@ -26,16 +27,16 @@ namespace BMPLib {
         unsigned int  biClrUsed;
         unsigned int  biClrImportant;
     };
-
+    #pragma pack(pop)
     class BmpInfo {
     public:
         friend std::shared_ptr<BmpInfo> makeBmpInfo(const std::string & filename);
 
-        BmpInfo() : imageData(nullptr) {}
-        virtual ~BmpInfo() {
-            delete imageData;
-        }
-    private:
+        BmpInfo();
+        virtual ~BmpInfo();
+
+        void show();
+
         Bmp bmp;
         unsigned char * imageData;
     };

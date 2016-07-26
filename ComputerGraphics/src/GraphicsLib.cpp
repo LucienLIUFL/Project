@@ -9,10 +9,14 @@
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 
+#include "BMPLib.h"
 
-float angle = 0.0f;
 float color = 0.0f;
-float delta = 0.01f;
+float xRot;
+float yRot;
+float zRot;
+GLuint texture[1];
+
 
 void GraphicsLib::reSizeGLScene(int width, int height) {
     if (0 == height) {
@@ -29,46 +33,51 @@ void GraphicsLib::reSizeGLScene(int width, int height) {
 }
 
 bool GraphicsLib::initGL() {
+    bool returnValue = false;
+    returnValue = loadGLTextures();
+    glEnable(GL_TEXTURE_2D);
+
+
     glShadeModel(GL_SMOOTH); // Set Shade Smooth
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Set Black Background
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST); // Enable Depth Test
     glDepthFunc(GL_LEQUAL);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-    return true;
+    returnValue = true;
+    return returnValue;
 }
 
 void GraphicsLib::display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
-    glTranslatef(-1.5f, 0.0f, -10.0f);
-    drawTriangle();
-    glLoadIdentity();
-
-    glTranslatef(1.5f, 0.0f, -10.0f);
-    drawQuads();
+    // glTranslatef(-2.0f, 0.0f, -10.0f);
+    // drawTriangle();
+    // glLoadIdentity();
+    //
+    // glTranslatef(2.0f, 0.0f, -10.0f);
+    // drawQuads();
+    // glLoadIdentity();
+    glTranslatef(0.0f,0.0f,-5.0f);
+    drawTexture();
     glLoadIdentity();
 
     glFlush();
 }
 
-void GraphicsLib::spin() {
-    angle += 1.0f;
-    color += delta;
-    if (angle > 360.0) {
-        angle -= 360.0;
-    }
-
-    if ((color > 1.0f) || (color < 0.0f)) {
-        color -= delta;
-        delta *= -1;
-    }
+void GraphicsLib::translate() {
+    color += 0.01;
+    xRot+=0.3f;
+	yRot+=0.2f;
+	zRot+=0.4f;
     glutPostRedisplay();
 }
 
 void GraphicsLib::drawTriangle() {
-    glRotatef(angle, 1.0f, 1.0f, 0.0f);
+    glRotatef(xRot,1.0f,0.0f,0.0f);
+	glRotatef(yRot,0.0f,1.0f,0.0f);
+	glRotatef(zRot,0.0f,0.0f,1.0f);
     glBegin(GL_TRIANGLES);
         glColor3f(1.0f, color, 0.0f);
         glVertex3f(0.0f, 1.0f, 0.0f);
@@ -109,7 +118,9 @@ void GraphicsLib::drawTriangle() {
 }
 
 void GraphicsLib::drawQuads() {
-    glRotatef(angle, 1.0f, 1.0f, 1.0f);
+    glRotatef(xRot,1.0f,0.0f,0.0f);
+	glRotatef(yRot,0.0f,1.0f,0.0f);
+	glRotatef(zRot,0.0f,0.0f,1.0f);
     glColor3f(0.5f, 0.5f, 1.0f);
     glBegin(GL_QUADS);
         glColor3f(color,1.0f,0.0f);						// Set The Color To Blue
@@ -157,5 +168,62 @@ void GraphicsLib::drawQuads() {
 }
 
 void GraphicsLib::drawTexture() {
+	glRotatef(xRot,1.0f,0.0f,0.0f);
+	glRotatef(yRot,0.0f,1.0f,0.0f);
+	glRotatef(zRot,0.0f,0.0f,1.0f);
+    glBindTexture(GL_TEXTURE_2D, texture[0]);
+    glBegin(GL_QUADS);
+		// Front Face
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
+		// Back Face
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f);
+		// Top Face
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);
+		// Bottom Face
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, -1.0f, -1.0f);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, -1.0f, -1.0f);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
+		// Right face
+		glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
+		// Left Face
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);
+	glEnd();
+}
 
+bool GraphicsLib::loadGLTextures() {
+    bool returnValue = false;
+    std::shared_ptr<BMPLib::BmpInfo> pBmpInfo;
+    pBmpInfo = BMPLib::makeBmpInfo("data/1.bmp");
+    if (pBmpInfo) {
+        returnValue = true;
+        glGenTextures(1, &texture[0]);
+
+        glBindTexture(GL_TEXTURE_2D, texture[0]);
+        glTexImage2D(
+            GL_TEXTURE_2D, 0, 3,
+            pBmpInfo->bmp.biWidth,
+            pBmpInfo->bmp.biHeight,
+            0, GL_RGB, GL_UNSIGNED_BYTE,
+            pBmpInfo->imageData
+        );
+        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+    }
+    return returnValue;
 }
