@@ -1,5 +1,6 @@
 #include "BMPLib.h"
 #include <cstdio>
+#include <cmath>
 #include <iostream>
 #include <string>
 #include <memory>
@@ -18,11 +19,12 @@ void BMPLib::BmpInfo::show() {
     std::cout << "biSize: "<< this->bmp.biSize << std::endl;
     std::cout << "biWidth: "<< this->bmp.biWidth << std::endl;
     std::cout<< "biHeight: " << this->bmp.biHeight << std::endl;
+    std::cout<< "biBitCount: " << this->bmp.biBitCount << std::endl;
     std::cout<< "biSizeImage: " << this->bmp.biSizeImage << std::endl;
 }
 
 std::shared_ptr<BMPLib::BmpInfo> BMPLib::makeBmpInfo(const std::string & filename) {
-    FILE * file = fopen(filename.c_str(), "r");
+    FILE * file = fopen(filename.c_str(), "rb");
     if (!file) {
         std::cerr << "FILE IS NOT EXISTS:" << filename << std::endl;
         return nullptr;
@@ -33,11 +35,16 @@ std::shared_ptr<BMPLib::BmpInfo> BMPLib::makeBmpInfo(const std::string & filenam
     BMPLib::Bmp bmp;
     fseek(file, 0, 0);
     fread(&bmp, sizeof(BMPLib::Bmp), 1, file);
-    int tempSize = bmp.biWidth * bmp.biHeight * 4;
-    // bmpInfo->imageData = new unsigned char[bmp.biSizeImage];
+
+    if (bmp.biBitCount != 24) {
+        std::cerr << "FILE IS NOT 24:" << filename << " : " << bmp.biBitCount<< std::endl;
+        return nullptr;
+    }
+
+    bmp.biHeight = abs(bmp.biHeight);
+    unsigned int tempSize = ((((bmp.biWidth * bmp.biBitCount) + 31) & ~31) / 8) * bmp.biHeight;
     bmpInfo->imageData = new unsigned char[tempSize];
     fseek(file, (long)bmp.bfOffBits, 0);
-    // fread(bmpInfo->imageData, sizeof(unsigned char), bmp.biSizeImage, file);
     fread(bmpInfo->imageData, sizeof(unsigned char), tempSize, file);
     fclose(file);
 

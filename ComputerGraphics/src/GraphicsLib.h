@@ -3,9 +3,6 @@
 
 class GraphicsLib {
 public:
-    GraphicsLib() = default;
-    virtual ~GraphicsLib() = default;
-
     static void reSizeGLScene(int width, int height);
     static bool initGL();
     static void display();
@@ -13,9 +10,12 @@ public:
 private:
     static bool loadGLTextures();
 
-    static void drawTriangle();
-    static void drawQuads();
-    static void drawTexture();
+    static void drawTriangle(float x, float y, float z);
+    static void drawQuads(float x, float y, float z);
+    static void drawTexture(float x, float y, float z);
+
+
+    static void drawTest(float x, float y, float z);
 };
 
 #endif
