@@ -10,8 +10,9 @@ int main(int argc, char * argv[]) {
 
     GraphicsLib::reSizeGLScene(4, 3);
     if (GraphicsLib::initGL()) {
-        glutDisplayFunc(GraphicsLib::display);
-        glutIdleFunc(GraphicsLib::translate);
+        glutDisplayFunc(GraphicsLib::display); // Display Callback Function
+        glutIdleFunc(GraphicsLib::translate); // Idle Callback Function
+        glutKeyboardFunc(GraphicsLib::keyEvent);
         glutMainLoop();
     }
     return 0;

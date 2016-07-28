@@ -11,13 +11,32 @@
 
 #include "BMPLib.h"
 
+// Color
 float color = 0.0f;
+// ~Color
+
+// Rotation
 float xRot;
 float yRot;
 float zRot;
+// ~Rotation
 
-GLuint texture[3];
+// Texture
+unsigned int texture[0];
+// ~Texture
 
+// Light
+bool lightStatus = false;
+bool keyStautus = false;
+
+float ambient[] = {0.5f, 0.5f, 0.5f, 1.0f};
+float diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
+float position[] = {0.0f, 0.0f, 2.0f, 1.0f};
+// ~Light
+
+// Blend
+bool blendStatus = false;
+// ~Blend
 
 void GraphicsLib::reSizeGLScene(int width, int height) {
     if (0 == height) {
@@ -35,10 +54,21 @@ void GraphicsLib::reSizeGLScene(int width, int height) {
 
 bool GraphicsLib::initGL() {
     bool returnValue = false;
+    // Light Section
+    glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
+    glLightfv(GL_LIGHT1, GL_POSITION, position);
+    glEnable(GL_LIGHT1);
+
+    // Texture Section
     returnValue = loadGLTextures();
     glEnable(GL_TEXTURE_2D);
 
+    // Blend Section
+    glColor4f(1.0f,1.0f,1.0f,0.5f);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
+    // Normal Section
     glShadeModel(GL_SMOOTH); // Set Shade Smooth
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Set Black Background
     glClearDepth(1.0f);
@@ -52,7 +82,6 @@ bool GraphicsLib::initGL() {
 void GraphicsLib::display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-
     // drawTriangle(-2.0f, 0.0f, -10.0f);
     // drawQuads(2.0f, 0.0f, -10.0f);
     drawTexture(0.0f,0.0f,-5.0f);
@@ -68,6 +97,29 @@ void GraphicsLib::translate() {
 	yRot+=0.2f;
 	zRot+=0.4f;
     glutPostRedisplay();
+}
+
+void GraphicsLib::keyEvent(unsigned char key, int x, int y) {
+    switch (key) {
+        case 'L' : {
+            glDisable(GL_LIGHTING);
+            break;
+        };
+        case 'l' : {
+            glEnable(GL_LIGHTING);
+            break;
+        };
+        case 'B' : {
+            glDisable(GL_BLEND);
+            glEnable(GL_DEPTH_TEST);
+            break;
+        }
+        case 'b' : {
+            glDisable(GL_DEPTH_TEST);
+            glEnable(GL_BLEND);
+            break;
+        }
+    }
 }
 
 void GraphicsLib::drawTriangle(float x, float y, float z) {
@@ -236,18 +288,16 @@ bool GraphicsLib::loadGLTextures() {
         returnValue = true;
         glGenTextures(1, texture);
 
-        for (int i = 0; i < 1; ++i) {
-            glBindTexture(GL_TEXTURE_2D, texture[0]);
-            glTexImage2D(
-                GL_TEXTURE_2D, 0, 3,
-                pBmpInfo->bmp.biWidth,
-                pBmpInfo->bmp.biHeight,
-                0, GL_BGR, GL_UNSIGNED_BYTE,
-                pBmpInfo->imageData
-            );
-            glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-    		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-        }
+        glBindTexture(GL_TEXTURE_2D, texture[0]);
+        glTexImage2D(
+            GL_TEXTURE_2D, 0, 3,
+            pBmpInfo->bmp.biWidth,
+            pBmpInfo->bmp.biHeight,
+            0, GL_BGR, GL_UNSIGNED_BYTE,
+            pBmpInfo->imageData
+        );
+        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
     }
     return returnValue;
 }
