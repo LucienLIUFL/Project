@@ -101,6 +101,7 @@ void GraphicsLib::translate() {
 
 void GraphicsLib::keyEvent(unsigned char key, int x, int y) {
     switch (key) {
+        // Light Control
         case 'L' : {
             glDisable(GL_LIGHTING);
             break;
@@ -109,6 +110,7 @@ void GraphicsLib::keyEvent(unsigned char key, int x, int y) {
             glEnable(GL_LIGHTING);
             break;
         };
+        // Blend Control
         case 'B' : {
             glDisable(GL_BLEND);
             glEnable(GL_DEPTH_TEST);
