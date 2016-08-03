@@ -16,7 +16,11 @@ int main(int argc, char const * argv[]) {
     // std::cout << test.find(1) << std::endl;
     test.insert(9, 44);
     test.traverse(visit);
-    test.remove(5);
+    std::cout << "/* message */" << std::endl;
+    for (int i = 0; i < 20; ++i) {
+        test.remove(0);
+    }
+
     test.traverse(visit);
     return 0;
 }
