@@ -1,7 +1,7 @@
 #ifndef VECTOR_H_
 #define VECTOR_H_
 
-#define Type int
+using Type = int;
 namespace Maples {
     class Vector {
     public:
