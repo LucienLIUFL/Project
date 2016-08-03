@@ -93,12 +93,3 @@ void List::traverse(void (*visit)(Type)) {
         temp = temp->next;
     }
 }
-
-
-
-
-
-
-
-
-//

@@ -5,6 +5,7 @@ using Type = int;
 class Node {
 public:
     Node() : next(nullptr) {}
+    virtual ~Node() = default;
     Type elem;
     Node * next;
 };
