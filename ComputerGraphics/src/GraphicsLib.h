@@ -15,6 +15,16 @@ private:
     static void drawQuads(float x, float y, float z);
     static void drawTexture(float x, float y, float z);
     static void drawTest(float x, float y, float z);
+    static void drawStars(float x, float y, float z);
+};
+
+class Star {
+public:
+    int r;
+    int g;
+    int b;
+    float dist;
+    float angle;
 };
 
 #endif
