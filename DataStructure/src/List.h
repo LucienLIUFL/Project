@@ -23,7 +23,8 @@ public:
     void insert(int pos, const Type & e);
     void remove(int pos);
     int find(const Type & e) const;
-    void traverse(void (* visit)(Type));
+    Type operator[](int pos) const;
+    void delegate(void (* visit)(Type));
 private:
     Node * header;
     int size;
