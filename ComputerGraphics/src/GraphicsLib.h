@@ -16,6 +16,7 @@ private:
     static void drawTexture(float x, float y, float z);
     static void drawTest(float x, float y, float z);
     static void drawStars(float x, float y, float z);
+
 };
 
 class Star {

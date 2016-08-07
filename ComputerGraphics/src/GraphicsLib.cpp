@@ -1,7 +1,8 @@
 #include "GraphicsLib.h"
-#include <cmath>
 #include <iostream>
+#include <random>
 
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 
@@ -10,9 +11,10 @@
 #include <OpenGL/glu.h>
 
 #include "BMPLib.h"
+#include "Object.h"
 
 #define MAPLES_2D
-#define STAR
+#define BOX
 
 // Color
 float color = 0.0f;
@@ -43,9 +45,9 @@ bool blendStatus = false;
 
 // <Star>
 const int STAR_NUM = 50;
-Star stars[50];
+Star stars[STAR_NUM];
 
-float zoom = -100.0f;
+float zoom = -25.0f;
 float tilt = 90.f;
 float spin = 0.0f;
 int loop = 0;
@@ -68,18 +70,21 @@ void GraphicsLib::reSizeGLScene(int width, int height) {
 
 bool GraphicsLib::initGL() {
     bool returnValue = false;
+    std::shared_ptr<Object> object = std::make_shared<Object3D>();
 
-    // 3D or 2D
-#ifdef MAPLES_3D
-    glDepthFunc(GL_LEQUAL);
-    // Light Section
-    glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
-    glLightfv(GL_LIGHT1, GL_POSITION, position);
-    glEnable(GL_LIGHT1);
+    object->init();
 
-    glEnable(GL_DEPTH_TEST); // Enable Depth Test
-#endif
+//     // 3D or 2D
+// #ifdef MAPLES_3D
+//     glDepthFunc(GL_LEQUAL);
+//     // Light Section
+//     glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
+//     glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
+//     glLightfv(GL_LIGHT1, GL_POSITION, position);
+//     glEnable(GL_LIGHT1);
+//
+//     glEnable(GL_DEPTH_TEST); // Enable Depth Test
+// #endif
 
 
     // Texture Section
@@ -98,7 +103,7 @@ bool GraphicsLib::initGL() {
     glEnable(GL_BLEND);
     for (int i = 0; i < STAR_NUM; ++i) {
         stars[i].angle = 0.0f;
-        stars[i].dist = (static_cast<float>(i) / STAR_NUM) * 0.5f;
+        stars[i].dist = (static_cast<float>(i) / STAR_NUM) * 0.1f;
         stars[i].r = (rand() % 256);
         stars[i].g = (rand() % 256);
         stars[i].b = (rand() % 256);
@@ -114,10 +119,10 @@ void GraphicsLib::display() {
     glLoadIdentity();
     // drawTriangle(-2.0f, 0.0f, -10.0f);
     // drawQuads(2.0f, 0.0f, -10.0f);
-    // drawTexture(0.0f,0.0f,-5.0f);
+    drawTexture(0.0f,0.0f,-5.0f);
     // drawTest(0.0, 0.0, -10.0);
     // gluLookAt(0.0f, 0.0f, 20.0f, 0.0f,0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-    drawStars(0.0, 0.0, zoom);
+    // drawStars(0.0, 0.0, zoom);
 
     glutSwapBuffers();
 }
@@ -132,6 +137,12 @@ void GraphicsLib::translate() {
 
 #ifdef STAR
     spin += 0.01;
+    for (int i = 0; i < STAR_NUM; ++i) {
+        stars[i].r = (rand() % 256);
+        stars[i].g = (rand() % 256);
+        stars[i].b = (rand() % 256);
+    }
+
 #endif
     glutPostRedisplay();
 }
@@ -156,6 +167,9 @@ void GraphicsLib::keyEvent(unsigned char key, int x, int y) {
         case 'b' : {
             glDisable(GL_DEPTH_TEST);
             glEnable(GL_BLEND);
+            break;
+        }
+        case 'c' : {
             break;
         }
     }
@@ -322,7 +336,7 @@ void GraphicsLib::drawTest(float x, float y, float z) {
 bool GraphicsLib::loadGLTextures() {
     bool returnValue = false;
     std::shared_ptr<BMPLib::BmpInfo> pBmpInfo;
-    pBmpInfo = BMPLib::makeBmpInfo("data/Star.bmp");
+    pBmpInfo = BMPLib::makeBmpInfo("data/Lumber.bmp");
     if (pBmpInfo) {
         returnValue = true;
         glGenTextures(1, &texture);
@@ -349,49 +363,18 @@ void GraphicsLib::drawStars(float x, float y, float z) {
     for (int i = 0; i < STAR_NUM; ++i) {
         glLoadIdentity();
         glRotatef(7.2 * i * spin, 0, 0, 1);
-        // glTranslatef(1.0f, 0.0f, zoom);
-        // glRotatef(tilt, 1.0f, 0.0f, 0.0f);
-        //
-        // glRotatef(stars[loop].angle, 0.0, 1.0, 0.0);
-        glTranslatef(stars[loop].dist, i, zoom);
-        //
-        // glRotatef(-stars[loop].angle, 0.0, 1.0, 0.0);
-        // glRotatef(-tilt, 1.0f, 0.0f, 0.0f);
-        //
-        //
-        // glRotatef(spin, 0.0, 0.0, 1.0);
-        // glColor4ub(stars[loop].r, stars[loop].g, stars[loop].b, 255);
-        // glBegin(GL_QUADS);
-        //     glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f,-1.0f, 0.0f);
-		// 	glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f,-1.0f, 0.0f);
-		// 	glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f, 1.0f, 0.0f);
-		// 	glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 0.0f);
-        // glEnd();
-        //
-        // stars[loop].angle += static_cast<float>(loop) / STAR_NUM;
-        // stars[loop].dist -= 0.01;
-        // spin += 0.01;
-        // if (stars[loop].dist < 0.0f) {
-    	// 	stars[loop].dist += 5.0f;
-    	// 	stars[loop].r = rand() % 256;
-    	// 	stars[loop].g = rand() % 256;
-    	// 	stars[loop].b = rand() % 256;
-        // }
-        glColor4ub(stars[loop].r, stars[loop].g, stars[loop].b, 255);
+        glTranslatef(stars[loop].dist, i * 0.15, zoom);
+
+        glRotatef(spin, 1, 0, 0);
+        glColor4ub(stars[i].r, stars[i].g, stars[i].b, 255);
         glBegin(GL_QUADS);
             glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f,-1.0f, 0.0f);
 			glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f,-1.0f, 0.0f);
 			glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f, 1.0f, 0.0f);
 			glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 0.0f);
         glEnd();
-
     }
 }
-
-
-
-
-
 
 
 
