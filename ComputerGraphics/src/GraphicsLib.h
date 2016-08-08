@@ -1,6 +1,9 @@
 #ifndef GRAPHICSLIB_H_
 #define GRAPHICSLIB_H_
 
+#include "Object.h"
+#include <memory>
+
 class GraphicsLib {
 public:
     static void reSizeGLScene(int width, int height);
@@ -16,7 +19,6 @@ private:
     static void drawTexture(float x, float y, float z);
     static void drawTest(float x, float y, float z);
     static void drawStars(float x, float y, float z);
-
 };
 
 class Star {

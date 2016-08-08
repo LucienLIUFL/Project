@@ -52,7 +52,7 @@ float tilt = 90.f;
 float spin = 0.0f;
 int loop = 0;
 // </Star>
-
+std::shared_ptr<Object> object = std::make_shared<Cube>();
 
 void GraphicsLib::reSizeGLScene(int width, int height) {
     if (0 == height) {
@@ -70,7 +70,7 @@ void GraphicsLib::reSizeGLScene(int width, int height) {
 
 bool GraphicsLib::initGL() {
     bool returnValue = false;
-    std::shared_ptr<Object> object = std::make_shared<Object3D>();
+
 
     object->init();
 
@@ -87,28 +87,33 @@ bool GraphicsLib::initGL() {
 // #endif
 
 
-    // Texture Section
-    returnValue = loadGLTextures();
-    glEnable(GL_TEXTURE_2D);
+    // // Texture Section
+    // returnValue = loadGLTextures();
+    // glEnable(GL_TEXTURE_2D);
     // Normal Section
+    // glShadeModel(GL_SMOOTH); // Set Shade Smooth
+    // glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Set Black Background
+    // glClearDepth(1.0f);
+    // glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    // Blend Section
+    // glColor4f(1.0f,1.0f,1.0f,0.5f);
+    // glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+    // glEnable(GL_BLEND);
+// #ifdef STAR
+//
+//     for (int i = 0; i < STAR_NUM; ++i) {
+//         stars[i].angle = 0.0f;
+//         stars[i].dist = (static_cast<float>(i) / STAR_NUM) * 0.1f;
+//         stars[i].r = (rand() % 256);
+//         stars[i].g = (rand() % 256);
+//         stars[i].b = (rand() % 256);
+//     }
+// #endif
+
     glShadeModel(GL_SMOOTH); // Set Shade Smooth
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Set Black Background
     glClearDepth(1.0f);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-    // Blend Section
-    glColor4f(1.0f,1.0f,1.0f,0.5f);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-
-#ifdef STAR
-    glEnable(GL_BLEND);
-    for (int i = 0; i < STAR_NUM; ++i) {
-        stars[i].angle = 0.0f;
-        stars[i].dist = (static_cast<float>(i) / STAR_NUM) * 0.1f;
-        stars[i].r = (rand() % 256);
-        stars[i].g = (rand() % 256);
-        stars[i].b = (rand() % 256);
-    }
-#endif
 
     returnValue = true;
     return returnValue;
@@ -119,32 +124,56 @@ void GraphicsLib::display() {
     glLoadIdentity();
     // drawTriangle(-2.0f, 0.0f, -10.0f);
     // drawQuads(2.0f, 0.0f, -10.0f);
-    drawTexture(0.0f,0.0f,-5.0f);
+    // drawTexture(0.0f,0.0f,-5.0f);
     // drawTest(0.0, 0.0, -10.0);
     // gluLookAt(0.0f, 0.0f, 20.0f, 0.0f,0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
     // drawStars(0.0, 0.0, zoom);
-
+    object->draw(0.0f,0.0f,-5.0f);
     glutSwapBuffers();
 }
 
 void GraphicsLib::translate() {
-#ifdef BOX
-    color += 0.01;
-    xRot+=0.3f;
-	yRot+=0.2f;
-	zRot+=0.4f;
-#endif
+// #ifdef BOX
+//     color += 0.01;
+//     xRot+=0.3f;
+// 	yRot+=0.2f;
+// 	zRot+=0.4f;
+// #endif
+//
+// #ifdef STAR
+//     spin += 0.01;
+//     for (int i = 0; i < STAR_NUM; ++i) {
+//         stars[i].r = (rand() % 256);
+//         stars[i].g = (rand() % 256);
+//         stars[i].b = (rand() % 256);
+//     }
+//
+// #endif
 
-#ifdef STAR
-    spin += 0.01;
-    for (int i = 0; i < STAR_NUM; ++i) {
-        stars[i].r = (rand() % 256);
-        stars[i].g = (rand() % 256);
-        stars[i].b = (rand() % 256);
-    }
-
-#endif
+    object->idle();
     glutPostRedisplay();
+}
+
+bool GraphicsLib::loadGLTextures() {
+    bool returnValue = false;
+    std::shared_ptr<BMPLib::BmpInfo> pBmpInfo;
+    pBmpInfo = BMPLib::makeBmpInfo("data/Lumber.bmp");
+    if (pBmpInfo) {
+        returnValue = true;
+        glGenTextures(1, &texture);
+
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glTexImage2D(
+            GL_TEXTURE_2D, 0, 3,
+            pBmpInfo->bmp.biWidth,
+            pBmpInfo->bmp.biHeight,
+            0, GL_BGR, GL_UNSIGNED_BYTE,
+            pBmpInfo->imageData
+        );
+        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+    }
+    return returnValue;
 }
 
 void GraphicsLib::keyEvent(unsigned char key, int x, int y) {
@@ -284,7 +313,6 @@ void GraphicsLib::drawTexture(float x, float y, float z) {
 		glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
 		glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
         glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
-        // glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
 		glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
 		// Back Face
         glNormal3f(0.0f, 0.0f, -1.0f);
@@ -331,28 +359,6 @@ void GraphicsLib::drawTest(float x, float y, float z) {
         glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
     glEnd();
     glLoadIdentity();
-}
-
-bool GraphicsLib::loadGLTextures() {
-    bool returnValue = false;
-    std::shared_ptr<BMPLib::BmpInfo> pBmpInfo;
-    pBmpInfo = BMPLib::makeBmpInfo("data/Lumber.bmp");
-    if (pBmpInfo) {
-        returnValue = true;
-        glGenTextures(1, &texture);
-
-        glBindTexture(GL_TEXTURE_2D, texture);
-        glTexImage2D(
-            GL_TEXTURE_2D, 0, 3,
-            pBmpInfo->bmp.biWidth,
-            pBmpInfo->bmp.biHeight,
-            0, GL_BGR, GL_UNSIGNED_BYTE,
-            pBmpInfo->imageData
-        );
-        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-    }
-    return returnValue;
 }
 
 void GraphicsLib::drawStars(float x, float y, float z) {
