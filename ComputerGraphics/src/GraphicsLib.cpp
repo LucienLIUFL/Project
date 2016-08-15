@@ -76,20 +76,20 @@ bool GraphicsLib::initGL() {
 
 //     // 3D or 2D
 // #ifdef MAPLES_3D
-//     glDepthFunc(GL_LEQUAL);
-//     // Light Section
-//     glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
-//     glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
-//     glLightfv(GL_LIGHT1, GL_POSITION, position);
-//     glEnable(GL_LIGHT1);
-//
-//     glEnable(GL_DEPTH_TEST); // Enable Depth Test
+    // glDepthFunc(GL_LEQUAL);
+    // // Light Section
+    // glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
+    // glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
+    // glLightfv(GL_LIGHT1, GL_POSITION, position);
+    // glEnable(GL_LIGHT1);
+    //
+    // glEnable(GL_DEPTH_TEST); // Enable Depth Test
 // #endif
 
 
-    // // Texture Section
-    // returnValue = loadGLTextures();
-    // glEnable(GL_TEXTURE_2D);
+    // Texture Section
+    returnValue = loadGLTextures();
+    glEnable(GL_TEXTURE_2D);
     // Normal Section
     // glShadeModel(GL_SMOOTH); // Set Shade Smooth
     // glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Set Black Background
@@ -124,21 +124,20 @@ void GraphicsLib::display() {
     glLoadIdentity();
     // drawTriangle(-2.0f, 0.0f, -10.0f);
     // drawQuads(2.0f, 0.0f, -10.0f);
-    // drawTexture(0.0f,0.0f,-5.0f);
+    drawTexture(0.0f,0.0f,-5.0f);
     // drawTest(0.0, 0.0, -10.0);
     // gluLookAt(0.0f, 0.0f, 20.0f, 0.0f,0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
     // drawStars(0.0, 0.0, zoom);
-    object->draw(0.0f,0.0f,-5.0f);
+    // object->draw(0.0f, 0.0f, -5.0f, texture);
     glutSwapBuffers();
 }
 
 void GraphicsLib::translate() {
-// #ifdef BOX
-//     color += 0.01;
-//     xRot+=0.3f;
-// 	yRot+=0.2f;
-// 	zRot+=0.4f;
-// #endif
+    color += 0.01;
+    xRot+=0.3f;
+    yRot+=0.2f;
+    zRot+=0.4f;
+
 //
 // #ifdef STAR
 //     spin += 0.01;
@@ -150,7 +149,7 @@ void GraphicsLib::translate() {
 //
 // #endif
 
-    object->idle();
+    // object->idle();
     glutPostRedisplay();
 }
 
@@ -254,50 +253,55 @@ void GraphicsLib::drawQuads(float x, float y, float z) {
     glRotatef(xRot,1.0f,0.0f,0.0f);
 	glRotatef(yRot,0.0f,1.0f,0.0f);
 	glRotatef(zRot,0.0f,0.0f,1.0f);
-    glColor3f(0.5f, 0.5f, 1.0f);
+    // glColor3f(0.5f, 0.5f, 1.0f);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
     glBegin(GL_QUADS);
-        glColor3f(color,1.0f,0.0f);						// Set The Color To Blue
+        glEnable(GL_TEXTURE_GEN_MODE);
+        glTexGeni(GL_S, GL_TEXTURE_ENV_MODE, GL_NORMAL_MAP);
+        // glColor3f(color,1.0f,0.0f);						// Set The Color To Blue
         glVertex3f( 1.0f, 1.0f,-1.0f);					// Top
         glVertex3f(-1.0f, 1.0f,-1.0f);
-        glColor3f(1.0f,0.5f,color);
+        // glColor3f(1.0f,0.5f,color);
         glVertex3f(-1.0f, 1.0f, 1.0f);
         glVertex3f( 1.0f, 1.0f, 1.0f);
-
-        glColor3f(1.0f,0.5f,color);						// Set The Color To Orange
+        glDisable(GL_TEXTURE_GEN_S);
+        // glColor3f(1.0f,0.5f,color);						// Set The Color To Orange
         glVertex3f( 1.0f,-1.0f, 1.0f);					// Bottom
         glVertex3f(-1.0f,-1.0f, 1.0f);
-        glColor3f(0.0f, color, 1.0f);
+        // glColor3f(0.0f, color, 1.0f);
         glVertex3f(-1.0f,-1.0f,-1.0f);
         glVertex3f( 1.0f,-1.0f,-1.0f);
 
-        glColor3f(1.0f,color,0.0f);						// Set The Color To Red
+        // glColor3f(1.0f,color,0.0f);						// Set The Color To Red
         glVertex3f( 1.0f, 1.0f, 1.0f);					// Front
         glVertex3f(-1.0f, 1.0f, 1.0f);
-        glColor3f(color,0.0f,1.0f);
+        // glColor3f(color,0.0f,1.0f);
         glVertex3f(-1.0f,-1.0f, 1.0f);
         glVertex3f( 1.0f,-1.0f, 1.0f);
 
-        glColor3f(1.0f,1.0f,color);						// Set The Color To Yellow
+        // glColor3f(1.0f,1.0f,color);						// Set The Color To Yellow
         glVertex3f( 1.0f,-1.0f,-1.0f);					// Back
         glVertex3f(-1.0f,-1.0f,-1.0f);
-        glColor3f(color,0.0f,1.0f);
+        // glColor3f(color,0.0f,1.0f);
         glVertex3f(-1.0f, 1.0f,-1.0f);
         glVertex3f( 1.0f, 1.0f,-1.0f);
 
-        glColor3f(0.0f,color,1.0f);						// Set The Color To Blue
+        // glColor3f(0.0f,color,1.0f);						// Set The Color To Blue
         glVertex3f(-1.0f, 1.0f, 1.0f);					// Left
         glVertex3f(-1.0f, 1.0f,-1.0f);
-        glColor3f(1.0f,1.0f,color);
+        // glColor3f(1.0f,1.0f,color);
         glVertex3f(-1.0f,-1.0f,-1.0f);
         glVertex3f(-1.0f,-1.0f, 1.0f);
 
-        glColor3f(1.0f,color,1.0f);						// Set The Color To Violet
+        // glColor3f(1.0f,color,1.0f);						// Set The Color To Violet
         glVertex3f( 1.0f, 1.0f,-1.0f);					// Right
         glVertex3f( 1.0f, 1.0f, 1.0f);
-        glColor3f(0.0f,1.0f,color);
+        // glColor3f(0.0f,1.0f,color);
         glVertex3f( 1.0f,-1.0f, 1.0f);
         glVertex3f( 1.0f,-1.0f,-1.0f);
     glEnd();
+
     glLoadIdentity();
 }
 

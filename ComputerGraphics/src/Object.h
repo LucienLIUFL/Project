@@ -8,7 +8,7 @@ public:
     virtual ~Object() = default;
     virtual void init() = 0;
     virtual void idle() = 0;
-    virtual void draw(float x, float y, float z) = 0;
+    virtual void draw(float x, float y, float z, unsigned int texture) = 0;
     virtual void keyEvent(unsigned char key, int x, int y) = 0;
 };
 
@@ -20,8 +20,7 @@ protected:
     std::array<float, 3> colors;
     std::array<float, 3> angles;
 
-    // virtual void Material();
-    // virtual void
+    virtual void setMaterial() = 0;
 };
 
 // class Object2D : public Object {
@@ -31,8 +30,9 @@ protected:
 class Cube : public Object3D {
 public:
     void idle() override;
-    void draw(float x, float y, float z) override;
+    void draw(float x, float y, float z, unsigned int texture) override;
     void keyEvent(unsigned char key, int x, int y) override;
+    void setMaterial() override;
 };
 
 #endif
