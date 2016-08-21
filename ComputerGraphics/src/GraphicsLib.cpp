@@ -71,11 +71,12 @@ void GraphicsLib::reSizeGLScene(int width, int height) {
 bool GraphicsLib::initGL() {
     bool returnValue = false;
 
+    // Texture Section
+    returnValue = loadGLTextures();
+    glEnable(GL_TEXTURE_2D);
 
     object->init();
-
-//     // 3D or 2D
-// #ifdef MAPLES_3D
+    
     // glDepthFunc(GL_LEQUAL);
     // // Light Section
     // glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
@@ -84,23 +85,15 @@ bool GraphicsLib::initGL() {
     // glEnable(GL_LIGHT1);
     //
     // glEnable(GL_DEPTH_TEST); // Enable Depth Test
-// #endif
 
 
-    // Texture Section
-    returnValue = loadGLTextures();
-    glEnable(GL_TEXTURE_2D);
-    // Normal Section
-    // glShadeModel(GL_SMOOTH); // Set Shade Smooth
-    // glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Set Black Background
-    // glClearDepth(1.0f);
-    // glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+
+
     // Blend Section
     // glColor4f(1.0f,1.0f,1.0f,0.5f);
     // glBlendFunc(GL_SRC_ALPHA, GL_ONE);
     // glEnable(GL_BLEND);
-// #ifdef STAR
-//
+
 //     for (int i = 0; i < STAR_NUM; ++i) {
 //         stars[i].angle = 0.0f;
 //         stars[i].dist = (static_cast<float>(i) / STAR_NUM) * 0.1f;
@@ -108,7 +101,7 @@ bool GraphicsLib::initGL() {
 //         stars[i].g = (rand() % 256);
 //         stars[i].b = (rand() % 256);
 //     }
-// #endif
+
 
     glShadeModel(GL_SMOOTH); // Set Shade Smooth
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Set Black Background
@@ -124,19 +117,19 @@ void GraphicsLib::display() {
     glLoadIdentity();
     // drawTriangle(-2.0f, 0.0f, -10.0f);
     // drawQuads(2.0f, 0.0f, -10.0f);
-    drawTexture(0.0f,0.0f,-5.0f);
+    // drawTexture(0.0f,0.0f,-5.0f);
     // drawTest(0.0, 0.0, -10.0);
     // gluLookAt(0.0f, 0.0f, 20.0f, 0.0f,0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
     // drawStars(0.0, 0.0, zoom);
-    // object->draw(0.0f, 0.0f, -5.0f, texture);
+    object->draw(0.0f, 0.0f, -5.0f, texture);
     glutSwapBuffers();
 }
 
 void GraphicsLib::translate() {
-    color += 0.01;
-    xRot+=0.3f;
-    yRot+=0.2f;
-    zRot+=0.4f;
+    // color += 0.01;
+    // xRot+=0.3f;
+    // yRot+=0.2f;
+    // zRot+=0.4f;
 
 //
 // #ifdef STAR
@@ -149,7 +142,7 @@ void GraphicsLib::translate() {
 //
 // #endif
 
-    // object->idle();
+    object->idle();
     glutPostRedisplay();
 }
 
@@ -176,31 +169,7 @@ bool GraphicsLib::loadGLTextures() {
 }
 
 void GraphicsLib::keyEvent(unsigned char key, int x, int y) {
-    switch (key) {
-        // Light Control
-        case 'L' : {
-            glDisable(GL_LIGHTING);
-            break;
-        };
-        case 'l' : {
-            glEnable(GL_LIGHTING);
-            break;
-        };
-        // Blend Control
-        case 'B' : {
-            glDisable(GL_BLEND);
-            glEnable(GL_DEPTH_TEST);
-            break;
-        }
-        case 'b' : {
-            glDisable(GL_DEPTH_TEST);
-            glEnable(GL_BLEND);
-            break;
-        }
-        case 'c' : {
-            break;
-        }
-    }
+    object->keyEvent(key, x, y);
 }
 
 void GraphicsLib::drawTriangle(float x, float y, float z) {

@@ -7,6 +7,7 @@
 #include <OpenGL/glu.h>
 
 void Object3D::init() {
+    glDepthFunc(GL_LEQUAL);
     // Light Section
     float ambient[] = {0.5f, 0.5f, 0.5f, 1.0f};
     float diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -17,7 +18,7 @@ void Object3D::init() {
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT1);
 
-    glDepthFunc(GL_LEQUAL);
+
     glEnable(GL_DEPTH_TEST); // Enable Depth Test
     this->angles[0] = 0.3;
     this->angles[1] = 0.2;
@@ -37,22 +38,8 @@ void Cube::idle() {
 void Cube::draw(float x, float y, float z, unsigned int texture) {
     glPushMatrix();
     // this->setMaterial();
-    GLfloat noMat[] = { 0.0, 0.0, 0.0, 1.0 };
-    // GLfloat maAambient[] = { 0.7, 0.7, 0.7, 1.0 };
-    // GLfloat mat_ambient_color[] = { 0.8, 0.8, 0.2, 1.0 };
-    GLfloat mat_diffuse[] = { 0.1, 0.5, 0.8, 1.0 };
-    // GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat no_shininess[] = { 0.0 };
-    // GLfloat low_shininess[] = { 5.0 };
-    // GLfloat high_shininess[] = { 100.0 };
-    // GLfloat mat_emission[] = {0.3, 0.2, 0.2, 0.0};
-    glMaterialfv(GL_FRONT, GL_AMBIENT, noMat);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, noMat);
-    glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
-    glMaterialfv(GL_FRONT, GL_EMISSION, noMat);
-    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-    glEnable(GL_COLOR_MATERIAL);
+    // glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    // glEnable(GL_COLOR_MATERIAL);
 
     glPushMatrix();
     glTranslatef(
@@ -68,6 +55,7 @@ void Cube::draw(float x, float y, float z, unsigned int texture) {
     // glColor3f(0.0, 0.0, 1.0);
     glBindTexture(GL_TEXTURE_2D, texture);
     float vertex[3], direction[3];
+    float tempX, tempY;
     int pivot, next, prior;
     glBegin(GL_QUADS);
     for (int i = 0; i < 6; ++i) {
@@ -82,34 +70,63 @@ void Cube::draw(float x, float y, float z, unsigned int texture) {
         for (int j = 0; j < 4; ++j) {
             vertex[prior] = (j % 3 == 0) ? -1 : 1;
             vertex[next] = (j > 1) ? -1 : 1;
+
+            tempX = (vertex[prior] < 0) ? 0 : vertex[prior];
+            tempY = (vertex[next] < 0) ? 0 : vertex[next];
+
+            glTexCoord2f(tempX, tempY);
             glVertex3fv(vertex);
         }
     }
     glEnd();
     glPopMatrix();
 
-    glDisable(GL_COLOR_MATERIAL);
+    // glDisable(GL_COLOR_MATERIAL);
     glPopMatrix();
     glLoadIdentity();
 }
 
 void Cube::keyEvent(unsigned char key, int x, int y) {
-
+    switch (key) {
+        // Light Control
+        case 'L' : {
+            glDisable(GL_LIGHTING);
+            break;
+        };
+        case 'l' : {
+            glEnable(GL_LIGHTING);
+            break;
+        };
+        // Blend Control
+        case 'B' : {
+            glDisable(GL_BLEND);
+            glEnable(GL_DEPTH_TEST);
+            break;
+        }
+        case 'b' : {
+            glDisable(GL_DEPTH_TEST);
+            glEnable(GL_BLEND);
+            break;
+        }
+        case 'c' : {
+            break;
+        }
+    }
 }
 
 void Cube::setMaterial() {
     GLfloat noMat[] = { 0.0, 0.0, 0.0, 1.0 };
-    // GLfloat maAambient[] = { 0.7, 0.7, 0.7, 1.0 };
+    GLfloat maAambient[] = { 0.7, 0.7, 0.7, 1.0 };
     // GLfloat mat_ambient_color[] = { 0.8, 0.8, 0.2, 1.0 };
     GLfloat mat_diffuse[] = { 0.1, 0.5, 0.8, 1.0 };
     // GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat no_shininess[] = { 0.0 };
-    // GLfloat low_shininess[] = { 5.0 };
+    // GLfloat no_shininess[] = { 0.0 };
+    GLfloat low_shininess[] = { 5.0 };
     // GLfloat high_shininess[] = { 100.0 };
     // GLfloat mat_emission[] = {0.3, 0.2, 0.2, 0.0};
-    glMaterialfv(GL_FRONT, GL_AMBIENT, noMat);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, maAambient);
     glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
     glMaterialfv(GL_FRONT, GL_SPECULAR, noMat);
-    glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
+    glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
     glMaterialfv(GL_FRONT, GL_EMISSION, noMat);
 }
