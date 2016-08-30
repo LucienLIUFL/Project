@@ -9,7 +9,7 @@
 
 int main(int argc, const char * argv[]) {
 
-    Maples::ThreadPool pool(4);
+//    Maples::ThreadPool pool(4);
 
     std::vector<std::future<std::string>> results;
 

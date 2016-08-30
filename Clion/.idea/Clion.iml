@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Vector.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/List.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ThreadPool.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ThreadPool.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Vector.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
