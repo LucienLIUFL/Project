@@ -1,21 +1,19 @@
 #include "Algorithm.hpp"
 
 int Algorithm::binarySearch(int * const array, int size, int key) {
-    int returnValue = -1;
     int low = 0, high = size - 1, mid;
 
     while (low <= high) {
         mid = (low + high) / 2;
         if (array[mid] == key) {
-            returnValue = mid;
-            break;
+            return mid;
         } else if (array[mid] > key) {
             high = mid - 1;
         } else {
             low = mid + 1;
         }
     }
-    return returnValue;
+    return -1;
 }
 
 void Algorithm::bubbleSort(int * const array, int size) {
