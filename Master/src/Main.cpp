@@ -26,5 +26,6 @@ int main(int argc, const char * argv[]) {
 	// show(array2);
     std::vector<int> heap = {53, 17, 78, 9, 45, 65, 87, 32};
 	Algorithm::heapSort(&heap[0], heap.size());
-
+	Algorithm::bubbleSort(&heap[0], heap.size());
+	show(heap);
 }

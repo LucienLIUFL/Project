@@ -19,13 +19,12 @@ int Algorithm::binarySearch(int * const array, int size, int key) {
 }
 
 void Algorithm::bubbleSort(int * const array, int size) {
-    int temp;
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < (size - i - 1); ++j) {
             if (array[j] > array[j + 1]) {
-                temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
+                array[j] += array[j + 1];
+                array[j + 1] = array[j] - array[j + 1];
+                array[j] -= array[j + 1];
             }
         }
     }
@@ -119,28 +118,30 @@ void Algorithm::mergeSort(int * const array1, int * const array2, int size1, int
 
 void Algorithm::heapSort(int * const array, int size) {
 	_buildMaxHeap(array, size);
-	_show(array, size);
+	for (int i = size - 1; i > 0; --i) {
+		array[i] += array[0];
+		array[0] = array[i] - array[0];
+		array[i] -= array[0];
+		_adjustDown(array, 0, i);
+	}
 }
 
 void Algorithm::_buildMaxHeap(int * const heap, int len) {
 	for (int i = len/2; i > 0; --i) {
 		_adjustDown(heap, i - 1, len);
-		std::cout << i << std::endl;
 	}
 }
 
 void Algorithm::_adjustDown(int * const heap, int root, int len) {
 	int rootValue = heap[root];
-	for (int i = 2 * root + 1; i < len; i = 2i + 1) {
-		i = ((i < len - 1) && (heap[i] < heap[i + 1])) ? i + 1 : i;
 
-		if (rootValue >= heap[i]) {
-			break;
-		} else {
+	for (int i = 2 * root + 1; i < len; i = 2*i + 1) {
+		i = ((i < len - 1) && (heap[i] < heap[i+1])) ? i + 1 : i;
+
+		if (rootValue < heap[i]) {
 			heap[root] = heap[i];
 			root = i;
 		}
-		std::cout << i << std::endl;
 	}
 	heap[root] = rootValue;
 }

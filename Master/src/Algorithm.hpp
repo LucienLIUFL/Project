@@ -13,9 +13,7 @@ public:
 
 private:
 	static void _show(int * const array, int size);
-
 	static int _partition(int * const array, int low, int high);
-
 	static void _adjustDown(int * const heap, int root, int len);
 	static void _buildMaxHeap(int * const heap, int len);
 };
