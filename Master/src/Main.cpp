@@ -25,5 +25,6 @@ int main(int argc, const char * argv[]) {
 	// Algorithm::mergeSort(&array0.at(0), &array1.at(0), array0.size(), array1.size(), &array2.at(0));
 	// show(array2);
     std::vector<int> heap = {53, 17, 78, 9, 45, 65, 87, 32};
+	Algorithm::heapSort(&heap[0], heap.size());
 
 }

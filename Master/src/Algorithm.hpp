@@ -16,7 +16,7 @@ private:
 
 	static int _partition(int * const array, int low, int high);
 
-	static void _adjustDown(int * const heap, int & root, int len);
+	static void _adjustDown(int * const heap, int root, int len);
 	static void _buildMaxHeap(int * const heap, int len);
 };
 

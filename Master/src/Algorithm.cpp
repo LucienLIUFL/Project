@@ -118,9 +118,29 @@ void Algorithm::mergeSort(int * const array1, int * const array2, int size1, int
 }
 
 void Algorithm::heapSort(int * const array, int size) {
-
+	_buildMaxHeap(array, size);
+	_show(array, size);
 }
 
-void Algorithm::_adjustDown(int * const heap, int & root, int len) {
+void Algorithm::_buildMaxHeap(int * const heap, int len) {
+	for (int i = len/2; i > 0; --i) {
+		_adjustDown(heap, i - 1, len);
+		std::cout << i << std::endl;
+	}
+}
 
+void Algorithm::_adjustDown(int * const heap, int root, int len) {
+	int rootValue = heap[root];
+	for (int i = 2 * root + 1; i < len; i = 2i + 1) {
+		i = ((i < len - 1) && (heap[i] < heap[i + 1])) ? i + 1 : i;
+
+		if (rootValue >= heap[i]) {
+			break;
+		} else {
+			heap[root] = heap[i];
+			root = i;
+		}
+		std::cout << i << std::endl;
+	}
+	heap[root] = rootValue;
 }
