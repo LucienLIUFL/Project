@@ -1,4 +1,5 @@
-#include "Algorithm.h"
+#include "Algorithm.hpp"
+#include <thread>
 
 void Algorithm::show(int * const array, int size) {
     for (int i = 0; i < size; ++i) {
@@ -7,14 +8,12 @@ void Algorithm::show(int * const array, int size) {
     std::cout << std::endl;
 }
 
-
-int Algorithm::binarySearch(int *const array, int size, int key) {
+int Algorithm::binarySearch(int * const array, int size, int key) {
     int returnValue = -1;
     int low = 0, high = size - 1, mid;
 
     while (low <= high) {
         mid = (low + high) / 2;
-
         if (array[mid] == key) {
             returnValue = mid;
             break;
@@ -61,4 +60,8 @@ void Algorithm::quickSort(int * const array, int low, int high) {
         quickSort(array, low, lowPos - 1);
         quickSort(array, lowPos + 1, high);
     }
+}
+
+void Algorithm::heapSort(int * const array, int size) {
+    
 }

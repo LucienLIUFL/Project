@@ -10,7 +10,7 @@ public:
     static void bubbleSort(int * const array, int size);
     static void quickSort(int * const array, int low, int high);
     static void selectSort(int * const array, int size);
-    static void heepSort(int * const array, int size);
+    static void heapSort(int * const array, int size);
     static void mergeSort(int * const array, int size);
     static void show(int * const array, int size);
 };
