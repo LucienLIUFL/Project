@@ -1,97 +1,59 @@
-#include <iostream>
+//#include <iostream>
+//#include <memory>
+//#include <stack>
+//#include "BiTree.h"
 
-class Algorithm {
+//std::stack<int> treeStack;
+//
+//void preOrder(const std::shared_ptr<BiNode<int>> & root) {
+//
+//    if (root) {
+//        treeStack.push(root->getValue());
+//        std::cout << root->getValue() << " And Stack " << treeStack.size() << std::endl;
+//        preOrder(root->getLchild());
+//        preOrder(root->getRchild());
+//        treeStack.pop();
+//    }
+//}
+
+#include <panel.h>
+
+class ListNode {
 public:
-    static int binarySearch(int * const array, int size, int key);
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(nullptr) {}
+};
 
-    static void insertSort(int * const array, int size);
+class Solution {
+public:
+    ListNode * addTwoNumbers(ListNode * l1, ListNode * l2) {
+        ListNode * returnList = new ListNode(-1);
+        ListNode * pL1 = l1;
+        ListNode * pL2 = l2;
+        ListNode * pReturnNode = returnList;
 
-    static void shellSort(int * const array, int size);
+        int carry = 0;
+        while (pL1 && pL2) {
+            pReturnNode->next = new ListNode(-1);
 
-    static void bubbleSort(int * const array, int size);
+            pReturnNode->val = pL1->val + pL2->val + carry;
+            carry = (pL1->val + pL2->val) > 9 ? 1 : 0;
+            if (carry == 1) {
+                pReturnNode -= 10;
+            }
 
-    static void quickSort(int * const array, int low, int high);
-
-    static void selectSort(int * const array, int size);
-
-    static void heepSort(int * const array, int size);
-
-    static void mergeSort(int * const array, int size);
-
-    static void show(int * const array, int size);
+            pReturnNode = pReturnNode->next;
+            pL1 = pL1->next;
+            pL2 = pL2->next;
+        }
+    }
 };
 
 int main(int argc, const char * argv[]) {
-    int arrayOrder[] = {1, 3, 5, 6, 8, 9}; // Size = 6;
-    int array[] = {2, 9, 4, 2, 1, 3, 1, 5, 6, 8, 0}; // Size = 11;
 
-    // std::cout << Algorithm::binarySearch(array,11, 8) << std::endl;
-    Algorithm::quickSort(arrayOrder, 0, 6);
-    Algorithm::quickSort(array, 0, 11);
-    Algorithm::show(arrayOrder, 6);
-    Algorithm::show(array, 11);
+//    std::shared_ptr<BiNode<int>> root;
+//
+//    preOrder(root);
     return 0;
-}
-
-void Algorithm::show(int * const array, int size) {
-    for (int i = 0; i < size; ++i) {
-        std::cout << array[i] << " " << std::ends;
-    }
-    std::cout << std::endl;
-}
-
-
-int Algorithm::binarySearch(int *const array, int size, int key) {
-    int returnValue = -1;
-    int low = 0, high = size - 1, mid;
-
-    while (low <= high) {
-        mid = (low + high) / 2;
-
-        if (array[mid] == key) {
-            returnValue = mid;
-            break;
-        } else if (array[mid] > key) {
-            high = mid - 1;
-        } else {
-            low = mid + 1;
-        }
-    }
-    return returnValue;
-}
-
-void Algorithm::bubbleSort(int * const array, int size) {
-    int temp;
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < (size - i - 1); ++j) {
-            if (array[j] > array[j + 1]) {
-                temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
-            }
-        }
-    }
-}
-
-void Algorithm::quickSort(int * const array, int low, int high) {
-    if (low < high) {
-        int pivot;
-        int lowPos = low;
-        int highPos = high;
-        pivot = array[low];
-        while (lowPos < highPos) {
-            while ((lowPos < highPos) && (array[highPos] >= pivot)) {
-                --highPos;
-            }
-            array[lowPos] = array[highPos];
-            while ((lowPos < highPos) && (array[lowPos] <= pivot)) {
-                ++lowPos;
-            }
-            array[highPos] = array[lowPos];
-        }
-        array[lowPos] = pivot;
-
-        quickSort(array, low, lowPos - 1);
-        quickSort(array, lowPos + 1, high);
-    }
 }
