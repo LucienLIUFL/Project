@@ -8,18 +8,13 @@ static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
 
-AppDelegate::AppDelegate()
-{
-}
+AppDelegate::AppDelegate() {}
 
-AppDelegate::~AppDelegate() 
-{
-}
+AppDelegate::~AppDelegate() {}
 
 // if you want a different context, modify the value of glContextAttrs
 // it will affect all platforms
-void AppDelegate::initGLContextAttrs()
-{
+void AppDelegate::initGLContextAttrs() {
     // set OpenGL context attributes: red,green,blue,alpha,depth,stencil
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
 
@@ -28,8 +23,7 @@ void AppDelegate::initGLContextAttrs()
 
 // if you want to use the package manager to install more packages,  
 // don't modify or remove this function
-static int register_all_packages()
-{
+static int register_all_packages() {
     return 0; //flag for packages manager
 }
 
