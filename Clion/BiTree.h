@@ -56,21 +56,16 @@ public:
 
     void initialize() {
         this->_root = std::make_shared<BiNode<int>>(0);
+
         this->_root->setLchild(std::make_shared<BiNode<int>>(1));
         this->_root->setRchild(std::make_shared<BiNode<int>>(2));
-        this->_root->getLchild()->setLchild(std::make_shared<BiNode<int>>(3));
-        this->_root->getLchild()->setRchild(std::make_shared<BiNode<int>>(4));
-        this->_root->getRchild()->setRchild(std::make_shared<BiNode<int>>(5));
-
-//        this->_root->getLchild()->getRchild()->setLchild(std::make_shared<BiNode<int>>(6));
     }
+    void release();
 
-    std::shared_ptr<BiNode<T>> getRoot() const {
-        return this->_root;
-    }
+    void visit() const;
 
 private:
-    std::shared_ptr<BiNode<T>> _root;
+    std::shared_ptr<BiNode> _root;
 };
 
 #endif //MAPLESLIB_BITREE_H
