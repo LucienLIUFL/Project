@@ -9,8 +9,6 @@ bool AudioControlScene::init() {
     if (!cocos2d::Layer::init()) {
         return false;
     }
-    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("res/s3.wav", true);
-
     cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
 
     cocos2d::ui::Text * musicText = cocos2d::ui::Text::create("BGMusic", "fonts/arial.ttf", 28);

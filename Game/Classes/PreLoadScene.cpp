@@ -1,6 +1,7 @@
 #include <string>
 #include "ui/CocosGUI.h"
 
+#include "GameMain.h"
 #include "SimpleAudioEngine.h"
 #include "PreLoadScene.h"
 
@@ -10,7 +11,7 @@ bool PreLoadScene::init() {
     }
 
     cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
-    cocos2d::Sprite * barSprite = cocos2d::Sprite::create("res/loadingbar-odl.png");
+    cocos2d::Sprite * barSprite = cocos2d::Sprite::create("res/loadingbar.png");
 
     this->progress = cocos2d::ProgressTimer::create(barSprite);
     this->progress->setPercentage(0.0f);
@@ -43,6 +44,10 @@ void PreLoadScene::onEnterTransitionDidFinish() {
             start->setPosition(cocos2d::Vec2(visibleSize.width / 2.0f, visibleSize.height * 0.2f));
             start->setTitleText(std::string("Start"));
             start->setTitleFontSize(12);
+            start->addTouchEventListener([](cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type) {
+                cocos2d::TransitionSlideInL * transition = cocos2d::TransitionSlideInL::create(0.2f, GameMain::createScene());
+                cocos2d::Director::getInstance()->replaceScene(transition);
+            });
             this->addChild(start);
     });
     this->runAction(cocos2d::Sequence::create(loadProgressBar, delay, loadStart, nullptr));
