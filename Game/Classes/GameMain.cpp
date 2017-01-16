@@ -225,7 +225,7 @@ void GameMain::over() {
     cocos2d::ui::Button * start = cocos2d::ui::Button::create("res/button.png");
     start->setScale(2);
     start->setPosition(cocos2d::Vec2(visibleSize.width / 2.0f, visibleSize.height * 0.2f));
-    start->setTitleText(std::string("Start"));
+    start->setTitleText(std::string("Retart"));
     start->setTitleFontSize(12);
     start->addTouchEventListener([](cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type) {
         cocos2d::TransitionSlideInL * transition = cocos2d::TransitionSlideInL::create(0.2f, GameMain::createScene());
