@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "../View/HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "GameMain.h"
+#include "../View/GameMain.h"
 
 USING_NS_CC;
 

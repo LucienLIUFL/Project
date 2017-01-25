@@ -1,17 +1,11 @@
 #include <string>
-#include <sstream>
+
 #include "SimpleAudioEngine.h"
 #include "HelloWorldScene.h"
 #include "GameMain.h"
 
-namespace Patch {
-    template <class T>
-    std::string to_string(const T & value) {
-        std::ostringstream otm;
-        otm << value;
-        return otm.str();
-    }
-}
+#include "../Controller/Maples.h"
+
 
 bool GameMain::init() {
     if (!cocos2d::Layer::init()) {
@@ -24,7 +18,7 @@ bool GameMain::init() {
                 cocos2d::Animation * animation = cocos2d::Animation::create();
                 for (int i = 0; i < num; ++i) {
 
-                    std::string tempName = name + Patch::to_string(i) + ".png";
+                    std::string tempName = name + Maples::to_string(i) + ".png";
                     animation->addSpriteFrame(
                             cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(tempName)
                     );
@@ -73,7 +67,7 @@ void GameMain::onEnter() {
     this->player->runAction(cocos2d::RepeatForever::create(animate));
 
     this->scoreValue = 0;
-    this->scoreLabel = cocos2d::Label::createWithSystemFont(Patch::to_string(this->scoreValue), "arial.ttf", 32);
+    this->scoreLabel = cocos2d::Label::createWithSystemFont(Maples::to_string(this->scoreValue), "arial.ttf", 32);
     this->scoreLabel->setPosition(cocos2d::Vec2(50, visibleSize.height * 0.94f));
     this->addChild(this->scoreLabel);
 
@@ -97,7 +91,6 @@ void GameMain::onEnter() {
     this->counter = 0;
 
     this->scheduleUpdate();
-//    this->schedule(schedule_selector(GameMain::update));
 }
 
 void GameMain::update(float delta) {
@@ -111,8 +104,6 @@ void GameMain::update(float delta) {
     this->updateEnemies();
     this->updateScore();
     this->collisionDetection();
-//    cocos2d::log("Bullets : %d, Enemies: %d", static_cast<int>(this->bullets.size()),
-//                 static_cast<int>(this->enemies.size()));
 }
 
 void GameMain::updateBackground() {
@@ -172,7 +163,7 @@ void GameMain::updateEnemies() {
 }
 
 void GameMain::updateScore() {
-    this->scoreLabel->setString(Patch::to_string(this->scoreValue));
+    this->scoreLabel->setString(Maples::to_string(this->scoreValue));
 }
 
 void GameMain::collisionDetection() {
@@ -239,8 +230,7 @@ void GameMain::over() {
         start->setTitleText(std::string("Retart"));
         start->setTitleFontSize(12);
         start->addTouchEventListener([](cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type) {
-            cocos2d::TransitionSlideInL * transition = cocos2d::TransitionSlideInL::create(0.2f, GameMain::createScene());
-            cocos2d::Director::getInstance()->replaceScene(transition);
+            cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionFade::create(0.2f, GameMain::createScene()));
         });
         this->addChild(start);
 
@@ -250,8 +240,7 @@ void GameMain::over() {
         returnButton->setTitleText(std::string("Return"));
         returnButton->setTitleFontSize(12);
         returnButton->addTouchEventListener([](cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type) {
-            cocos2d::TransitionSlideInL * transition = cocos2d::TransitionSlideInL::create(0.2f, HelloWorld::createScene());
-            cocos2d::Director::getInstance()->replaceScene(transition);
+            cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionFade::create(0.2f, HelloWorld::createScene()));
         });
         this->addChild(returnButton);
     });

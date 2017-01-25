@@ -5,7 +5,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-#include "Aircraft.h"
+#include "../Model/Aircraft.h"
 
 class GameMain : public cocos2d::Layer {
 public:
