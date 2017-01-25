@@ -27,20 +27,17 @@ private:
     cocos2d::Label * scoreLabel;
     int scoreValue;
 
-    Aircraft * boss;
-    cocos2d::Vector<cocos2d::Sprite *> bossBullets;
-    bool bossIsStart = false;
-    bool bossIsMove = false;
-    bool bossIsShoot = false;
-
     void update(float delta);
     void updateBackground();
     void updateEnemies();
     void updateBullets();
+    void updateScore();
     void collisionDetection();
 
     void playBombAnimate(const std::string &, cocos2d::Vec2);
     void over();
+
+    void addAircraft(const std::string & name, float scale, int healthPoints, float delay);
 };
 
 

@@ -1,8 +1,17 @@
 #include <string>
-
+#include <sstream>
 #include "SimpleAudioEngine.h"
-
+#include "HelloWorldScene.h"
 #include "GameMain.h"
+
+namespace Patch {
+    template <class T>
+    std::string to_string(const T & value) {
+        std::ostringstream otm;
+        otm << value;
+        return otm.str();
+    }
+}
 
 bool GameMain::init() {
     if (!cocos2d::Layer::init()) {
@@ -14,7 +23,8 @@ bool GameMain::init() {
             [](const std::string & name, double delay, int num) -> cocos2d::Animation * {
                 cocos2d::Animation * animation = cocos2d::Animation::create();
                 for (int i = 0; i < num; ++i) {
-                    std::string tempName = name + std::to_string(i) + ".png";
+
+                    std::string tempName = name + Patch::to_string(i) + ".png";
                     animation->addSpriteFrame(
                             cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(tempName)
                     );
@@ -63,8 +73,8 @@ void GameMain::onEnter() {
     this->player->runAction(cocos2d::RepeatForever::create(animate));
 
     this->scoreValue = 0;
-    this->scoreLabel = cocos2d::Label::createWithSystemFont(std::to_string(this->scoreValue), "arial.ttf", 32);
-    this->scoreLabel->setPosition(cocos2d::Vec2(50, visibleSize.height * 0.98f));
+    this->scoreLabel = cocos2d::Label::createWithSystemFont(Patch::to_string(this->scoreValue), "arial.ttf", 32);
+    this->scoreLabel->setPosition(cocos2d::Vec2(50, visibleSize.height * 0.94f));
     this->addChild(this->scoreLabel);
 
     cocos2d::EventListenerTouchOneByOne * planeListener = cocos2d::EventListenerTouchOneByOne::create();
@@ -99,9 +109,10 @@ void GameMain::update(float delta) {
     this->updateBackground();
     this->updateBullets();
     this->updateEnemies();
+    this->updateScore();
     this->collisionDetection();
-    cocos2d::log("Bullets : %d, Enemies: %d", static_cast<int>(this->bullets.size()),
-                 static_cast<int>(this->enemies.size()));
+//    cocos2d::log("Bullets : %d, Enemies: %d", static_cast<int>(this->bullets.size()),
+//                 static_cast<int>(this->enemies.size()));
 }
 
 void GameMain::updateBackground() {
@@ -143,17 +154,13 @@ void GameMain::updateBullets() {
 }
 
 void GameMain::updateEnemies() {
-    if (this->counter % 10 == 0) {
-        Aircraft * aircraft = Aircraft::createAircraft("e0.png");
-        aircraft->setScale(0.5f);
-        aircraft->setHealthPoints(1);
-        aircraft->setPosition(cocos2d::Vec2(cocos2d::random() % (int)visibleSize.width, visibleSize.height));
+    if (this->counter % 20 == 0) {
+        this->addAircraft("e0.png", 0.5f, 1, 2.0f);
+        this->addAircraft("e2.png", 0.6f, 2, 3.0f);
+    }
 
-        cocos2d::MoveBy * moveBy = cocos2d::MoveBy::create(2.0f, cocos2d::Vec2(0, -visibleSize.height));
-        aircraft->runAction(moveBy);
-
-        this->addChild(aircraft);
-        this->enemies.pushBack(aircraft);
+    if (this->counter % 100 == 0) {
+        this->addAircraft("e1.png", 0.7f, 5, 5.0f);
     }
 
     for (Aircraft * iter : this->enemies) {
@@ -164,22 +171,23 @@ void GameMain::updateEnemies() {
     }
 }
 
+void GameMain::updateScore() {
+    this->scoreLabel->setString(Patch::to_string(this->scoreValue));
+}
+
 void GameMain::collisionDetection() {
     // TODO:
-    bool isCollision = false;
+    bool isCollision;
     for (Aircraft * aircraft : this->enemies) {
-
+        // Player and enemy
         if (this->player->getBoundingBox().intersectsRect(aircraft->getBoundingBox())) {
             this->playBombAnimate("blast", aircraft->getPosition());
             this->playBombAnimate("blast", this->player->getPosition());
-
             aircraft->stopAllActions();
             this->player->stopAllActions();
-
             this->enemies.eraseObject(aircraft);
             this->removeChild(aircraft);
             this->removeChild(this->player);
-
             this->over();
             break;
         }
@@ -187,6 +195,7 @@ void GameMain::collisionDetection() {
         for (cocos2d::Sprite * bullet : this->bullets) {
             isCollision = bullet->getBoundingBox().intersectsRect(aircraft->getBoundingBox());
             if (isCollision) {
+                aircraft->setHealthPoints(aircraft->getHealthPoints() - 1);
                 this->playBombAnimate("blast", aircraft->getPosition());
                 bullet->stopAllActions();
                 this->removeChild(bullet);
@@ -195,10 +204,11 @@ void GameMain::collisionDetection() {
             }
         }
 
-        if (isCollision) {
+        if (aircraft->getHealthPoints() <= 0) {
             aircraft->stopAllActions();
             this->removeChild(aircraft);
             this->enemies.eraseObject(aircraft);
+            this->scoreValue++;
             break;
         }
     }
@@ -220,16 +230,47 @@ void GameMain::playBombAnimate(const std::string & name, cocos2d::Vec2 position)
 
 void GameMain::over() {
     this->unscheduleUpdate();
-    this->removeAllChildren();
-    CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
-    cocos2d::ui::Button * start = cocos2d::ui::Button::create("res/button.png");
-    start->setScale(2);
-    start->setPosition(cocos2d::Vec2(visibleSize.width / 2.0f, visibleSize.height * 0.2f));
-    start->setTitleText(std::string("Retart"));
-    start->setTitleFontSize(12);
-    start->addTouchEventListener([](cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type) {
-        cocos2d::TransitionSlideInL * transition = cocos2d::TransitionSlideInL::create(0.2f, GameMain::createScene());
-        cocos2d::Director::getInstance()->replaceScene(transition);
+//    this->removeAllChildren();
+    cocos2d::CallFunc * action = cocos2d::CallFunc::create([this]() {
+        CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+        cocos2d::ui::Button * start = cocos2d::ui::Button::create("res/button.png");
+        start->setScale(2);
+        start->setPosition(cocos2d::Vec2(visibleSize.width / 2.0f, visibleSize.height * 0.2f));
+        start->setTitleText(std::string("Retart"));
+        start->setTitleFontSize(12);
+        start->addTouchEventListener([](cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type) {
+            cocos2d::TransitionSlideInL * transition = cocos2d::TransitionSlideInL::create(0.2f, GameMain::createScene());
+            cocos2d::Director::getInstance()->replaceScene(transition);
+        });
+        this->addChild(start);
+
+        cocos2d::ui::Button * returnButton = cocos2d::ui::Button::create("res/button.png");
+        returnButton->setScale(2);
+        returnButton->setPosition(cocos2d::Vec2(visibleSize.width / 2.0f, visibleSize.height * 0.4f));
+        returnButton->setTitleText(std::string("Return"));
+        returnButton->setTitleFontSize(12);
+        returnButton->addTouchEventListener([](cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type) {
+            cocos2d::TransitionSlideInL * transition = cocos2d::TransitionSlideInL::create(0.2f, HelloWorld::createScene());
+            cocos2d::Director::getInstance()->replaceScene(transition);
+        });
+        this->addChild(returnButton);
     });
-    this->addChild(start);
+
+    cocos2d::DelayTime * delayTime = cocos2d::DelayTime::create(2.0);
+    this->runAction(cocos2d::Sequence::create(delayTime, action, nullptr));
 }
+
+void GameMain::addAircraft(const std::string & name, float scale, int healthPoints, float delay) {
+    Aircraft * aircraft = Aircraft::createAircraft(name);
+    aircraft->setScale(scale);
+    aircraft->setHealthPoints(healthPoints);
+    aircraft->setPosition(cocos2d::Vec2(cocos2d::random() % (int)visibleSize.width, visibleSize.height));
+
+    cocos2d::MoveBy * moveBy = cocos2d::MoveBy::create(delay, cocos2d::Vec2(0, -visibleSize.height - 100));
+    aircraft->runAction(moveBy);
+
+    this->addChild(aircraft);
+    this->enemies.pushBack(aircraft);
+}
+
+
