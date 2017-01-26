@@ -1,11 +1,15 @@
-##帧动画
+#帧动画
+
+## API Reference
 
 1. SpriteFrame
 2. SpriteFrameCache
 
-### 创建方法
+## 创建方法
 
-动画创建器
+## 学习笔记
+
+1. 动画创建器
 
 `cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("heroComobo.plist");`
 
@@ -16,3 +20,5 @@ cocos2d: fullPathForFilename: No file found at heroComobo.plist. Possible missin
 cocos2d: SpriteFrameCache: can not find heroComobo.plist
 cocos2d: QuadCommand: resizing index size from [-1] to [2560]
 ```
+
+2. virtual 后加override关键字;
