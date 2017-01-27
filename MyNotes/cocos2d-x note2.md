@@ -53,29 +53,27 @@
 
 ## Debug Note
 
-1. 
-
-### Question 0x0
+1.  Question 0x0
 
 ```
-cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("heroComobo.plist");
+    cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("heroComobo.plist");
 ```
 
 Raising Error:
 
 ```
-cocos2d: fullPathForFilename: No file found at heroComobo.plist. Possible missing file.
-cocos2d: SpriteFrameCache: can not find heroComobo.plist
+    cocos2d: fullPathForFilename: No file found at heroComobo.plist. Possible missing file.
+    cocos2d: SpriteFrameCache: can not find heroComobo.plist
 ```
 
 Solve: Add plist path in Xcode;
 
-### Question 0x1
+2. Question 0x1
 
 ```
-cocos2d: QuadCommand: resizing index size from [-1] to [2560]
+    cocos2d: QuadCommand: resizing index size from [-1] to [2560]
 ```
 
 Solve: director->setDisplayStats(true) --> false;
 
-2. virtual 后加override关键字;
+2. using _override_ keyword in overrided virtual function declaring;
