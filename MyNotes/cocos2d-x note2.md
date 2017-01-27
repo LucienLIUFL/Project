@@ -27,7 +27,7 @@
         return animation;
     }
 
-    static void debug(cocos2d::Layer * layer) {
+    static void createAnimate(cocos2d::Layer * layer) {
         // 1st Step: Read plist file and add it to spirteFrameCache
         cocos2d::SpriteFrameCache * spriteFrameCache = cocos2d::SpriteFrameCache::getInstance();
         spriteFrameCache->addSpriteFramesWithFile("plist/hero.plist");
