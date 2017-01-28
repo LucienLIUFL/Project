@@ -11,7 +11,7 @@ bool GameMain::init() {
     if (!cocos2d::Layer::init()) {
         return false;
     }
-
+    
     this->visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     std::function<cocos2d::Animation * (const std::string &, double, int)> createAnimation(
             [](const std::string & name, double delay, int num) -> cocos2d::Animation * {
