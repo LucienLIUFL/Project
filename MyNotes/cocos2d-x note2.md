@@ -8,24 +8,22 @@
 ## Create Node
 
 ```
-    static cocos2d::Animation * createAnimation(const std::string & filename, int num, double delay) {
-        cocos2d::SpriteFrame * spriteFrame;
-        cocos2d::Animation * animation = cocos2d::Animation::create();
-        cocos2d::SpriteFrameCache * spriteFrameCache = cocos2d::SpriteFrameCache::getInstance();
+    cocos2d::SpriteFrame * spriteFrame;
+    cocos2d::Animation * animation = cocos2d::Animation::create();
+    cocos2d::SpriteFrameCache * spriteFrameCache = cocos2d::SpriteFrameCache::getInstance();
 
-        // Fetch sprite frames form sprite frame cache and append them to animation
-        for (int i = 0; i < num; i++) {
-            spriteFrame = spriteFrameCache->getSpriteFrameByName(filename + toString(i + 1) + ".png");
-            animation->addSpriteFrame(spriteFrame);
-        }
-
-        // Set the Animation Interval
-        animation->setDelayPerUnit(static_cast<float>(delay));
-
-        // Set ture to make animation back to first frame after done
-        animation->setRestoreOriginalFrame(true);
-        return animation;
+    // Fetch sprite frames form sprite frame cache and append them to animation
+    for (int i = 0; i < num; i++) {
+        spriteFrame = spriteFrameCache->getSpriteFrameByName(filename + toString(i + 1) + ".png");
+        animation->addSpriteFrame(spriteFrame);
     }
+
+    // Set the Animation Interval
+    animation->setDelayPerUnit(static_cast<float>(delay));
+
+    // Set ture to make animation back to first frame after done
+    animation->setRestoreOriginalFrame(true);
+
 
     static void createAnimate(cocos2d::Layer * layer) {
         // 1st Step: Read plist file and add it to spirteFrameCache
