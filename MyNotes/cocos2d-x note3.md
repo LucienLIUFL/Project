@@ -27,7 +27,7 @@ singleTouch->onTouchMoved = std::bind(onTouchCallback, std::placeholders::_1, st
 
 ```
 
-4. Add Event Listener to Dispatcherc
+4. Add Event Listener to Dispatcher
 
 ```
 eventDispatcher->addEventListenerWithSceneGraphPriority(singleTouch, target);
