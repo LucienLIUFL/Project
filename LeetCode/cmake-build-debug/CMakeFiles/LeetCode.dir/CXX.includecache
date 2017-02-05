@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/maples/Documents/Project/LeetCode/MaplesTool/Maples.cpp
+Maples.h
+/Users/maples/Documents/Project/LeetCode/MaplesTool/Maples.h
+
+/Users/maples/Documents/Project/LeetCode/MaplesTool/Maples.h
+
+/Users/maples/Documents/Project/LeetCode/main.cpp
+iostream
+-
+future
+-
+
