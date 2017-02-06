@@ -4,5 +4,6 @@
 CMakeFiles/LeetCode.dir/MaplesTool/Maples.cpp.o: ../MaplesTool/Maples.cpp
 CMakeFiles/LeetCode.dir/MaplesTool/Maples.cpp.o: ../MaplesTool/Maples.h
 
+CMakeFiles/LeetCode.dir/main.cpp.o: ../MaplesTool/Maples.h
 CMakeFiles/LeetCode.dir/main.cpp.o: ../main.cpp
 
