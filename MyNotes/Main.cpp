@@ -25,10 +25,10 @@ int main(int argc, const char * argv[]) {
 
     Object object = std::string("Potter");
     // Book Harry(Object(std::string("Harry")));
-    // Book Maples(std::string("Maples"));
+    Book Maples(std::string("Maples"));
     // Book Potter = std::string("Potter");
 
-    // std::cout << Harry.show() << Maples.show() << std::endl;
-    std::cout << object._name << std::endl;
+    // std::cout << Maples.show() << std::endl;
+    // std::cout << object._name << std::endl;
     return 0;
 }
