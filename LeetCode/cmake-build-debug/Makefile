@@ -150,6 +150,33 @@ MaplesTool/Maples.cpp.s:
 	$(MAKE) -f CMakeFiles/LeetCode.dir/build.make CMakeFiles/LeetCode.dir/MaplesTool/Maples.cpp.s
 .PHONY : MaplesTool/Maples.cpp.s
 
+MaplesTool/Test.o: MaplesTool/Test.cpp.o
+
+.PHONY : MaplesTool/Test.o
+
+# target to build an object file
+MaplesTool/Test.cpp.o:
+	$(MAKE) -f CMakeFiles/LeetCode.dir/build.make CMakeFiles/LeetCode.dir/MaplesTool/Test.cpp.o
+.PHONY : MaplesTool/Test.cpp.o
+
+MaplesTool/Test.i: MaplesTool/Test.cpp.i
+
+.PHONY : MaplesTool/Test.i
+
+# target to preprocess a source file
+MaplesTool/Test.cpp.i:
+	$(MAKE) -f CMakeFiles/LeetCode.dir/build.make CMakeFiles/LeetCode.dir/MaplesTool/Test.cpp.i
+.PHONY : MaplesTool/Test.cpp.i
+
+MaplesTool/Test.s: MaplesTool/Test.cpp.s
+
+.PHONY : MaplesTool/Test.s
+
+# target to generate assembly for a file
+MaplesTool/Test.cpp.s:
+	$(MAKE) -f CMakeFiles/LeetCode.dir/build.make CMakeFiles/LeetCode.dir/MaplesTool/Test.cpp.s
+.PHONY : MaplesTool/Test.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -189,6 +216,9 @@ help:
 	@echo "... MaplesTool/Maples.o"
 	@echo "... MaplesTool/Maples.i"
 	@echo "... MaplesTool/Maples.s"
+	@echo "... MaplesTool/Test.o"
+	@echo "... MaplesTool/Test.i"
+	@echo "... MaplesTool/Test.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

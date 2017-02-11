@@ -79,7 +79,7 @@ namespace Maples {
     }
 
     int lengthOfLongestSubstring(std::string s) {
-
+        return 0;
     }
 }
 
