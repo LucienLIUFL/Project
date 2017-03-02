@@ -27,6 +27,10 @@ Test.h
 /Users/maples/Documents/Project/LeetCode/main.cpp
 iostream
 -
+functional
+-
+cstdio
+-
 MaplesTool/Test.h
 /Users/maples/Documents/Project/LeetCode/MaplesTool/Test.h
 
