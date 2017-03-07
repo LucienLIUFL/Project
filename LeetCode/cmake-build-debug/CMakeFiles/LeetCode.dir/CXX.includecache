@@ -11,14 +11,8 @@ Maples.h
 /Users/maples/Documents/Project/LeetCode/MaplesTool/Maples.h
 
 /Users/maples/Documents/Project/LeetCode/MaplesTool/Maples.h
-vector
--
-string
--
 
 /Users/maples/Documents/Project/LeetCode/MaplesTool/Test.cpp
-iostream
--
 Test.h
 /Users/maples/Documents/Project/LeetCode/MaplesTool/Test.h
 
@@ -26,10 +20,6 @@ Test.h
 
 /Users/maples/Documents/Project/LeetCode/main.cpp
 iostream
--
-functional
--
-cstdio
 -
 MaplesTool/Test.h
 /Users/maples/Documents/Project/LeetCode/MaplesTool/Test.h
