@@ -3,7 +3,7 @@ DIR_OBJ = ./obj
 DIR_BIN = ./bin
 DIR_INC = ./inc
 
-COMPILER = g++ -std=c++11
+COMPILER = g++
 COMPILER_OP = -g -Wall 
 
 
