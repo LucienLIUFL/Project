@@ -1,23 +1,40 @@
 #include <iostream>
+#include <vector>
+#include <list>
+
+
+void getMaxScore(int n, int k, const std::vector<int> & ai, const std::vector<int> & bi) {
+	std::list<int> results;
+
+	for (int i = 0; i < n; ++i) {
+		
+	}
+
+}
+
 
 int main(int argc, const char * argv[]) {
-	int p, e, i, d;
-	int count = 1;
-	while (std::cin >> p >> e >> i >> d) {
-		if (p == -1 && e == -1 && e == -1 && d == -1) {
-			break;
-		}
-		p %= 23;  
-        e %= 28;  
-        i %= 33; 
+	int n, k, temp;
+	std::vector<int> & ai;
+	std::vector<int> & bi;
 
-		for (int date = d + 1;; date++) {
-			if (((date - p) % 23 == 0) && ((date - e) % 28 == 0) && ((date - i) % 33 == 0)) {
-				std::cout << "Case " << count++ <<
-						": the next triple peak occurs in " << (date - d) << std::endl;
-				break;
-			}
-		}		
-	}	
+	std::cin >> n >> k;
+
+	if ((n != 0) && (k != 0)) {
+		for (int i = 0; i < n; ++i) {
+			std::cin >> temp;
+			ai.push_back(temp);
+		}
+		for (int i = 0; i < n; ++i) {
+			std::cin >> temp;
+			bi.push_back(temp);
+		}
+
+		getMaxScore(n, k, ai, bi);
+	}
+
+	
+
+
 	return 0;
 }
