@@ -1,40 +1,35 @@
 #include <iostream>
+#include <string>
+#include <algorithm>
 #include <vector>
 #include <list>
+#include <cmath>
 
-
-void getMaxScore(int n, int k, const std::vector<int> & ai, const std::vector<int> & bi) {
-	std::list<int> results;
-
-	for (int i = 0; i < n; ++i) {
-		
+int toTen(int a, int n) {
+	int returnValue = 0;
+	int i;
+	for (i = 0; a / 10 != 0; ++i) {
+		returnValue += (a % 10) * pow(n, i); 
+		a /= 10;
 	}
-
+	returnValue += (a % 10) * pow(n, i); 
+	return returnValue;
 }
 
-
 int main(int argc, const char * argv[]) {
-	int n, k, temp;
-	std::vector<int> & ai;
-	std::vector<int> & bi;
 
-	std::cin >> n >> k;
 
-	if ((n != 0) && (k != 0)) {
-		for (int i = 0; i < n; ++i) {
-			std::cin >> temp;
-			ai.push_back(temp);
+	int a, b, c;
+	std::cin >> a >> b >> c;
+	for (int i = 2; i < 17; ++i) {
+		int ta = toTen(a, i);
+		int tb = toTen(b, i);
+		int tc = toTen(c, i);
+
+		if (ta * tb == tc) {
+			std::cout << i << std::endl;
 		}
-		for (int i = 0; i < n; ++i) {
-			std::cin >> temp;
-			bi.push_back(temp);
-		}
-
-		getMaxScore(n, k, ai, bi);
 	}
-
-	
-
 
 	return 0;
 }
