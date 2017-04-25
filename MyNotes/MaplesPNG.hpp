@@ -79,14 +79,14 @@ public:
     }
 
     void setPixel(int x, int y, Color3D color) {
-        int index = x * H * 3 + y * 3;
+        int index = x * H * 3 + (H - y) * 3;
         this->pixels[index + 0] = color.r; 
         this->pixels[index + 1] = color.g;
         this->pixels[index + 2] = color.b;
     }
 
     Color3D getPixel(int x, int y) {
-        int index = x * H * 3 + y * 3;
+        int index = x * H * 3 + (H - y) * 3;
         return Color3D(pixels[index + 0], pixels[index + 1], pixels[index + 2]);
     }
 
