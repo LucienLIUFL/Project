@@ -79,14 +79,14 @@ public:
     }
 
     void setPixel(int x, int y, Color3D color) {
-        int index = x * H * 3 + (H - y) * 3;
+        int index = (H - y) * W * 3 + x * 3;
         this->pixels[index + 0] = color.r; 
         this->pixels[index + 1] = color.g;
         this->pixels[index + 2] = color.b;
     }
 
     Color3D getPixel(int x, int y) {
-        int index = x * H * 3 + (H - y) * 3;
+        int index = (H - y) * W * 3 + x * 3;
         return Color3D(pixels[index + 0], pixels[index + 1], pixels[index + 2]);
     }
 
@@ -94,22 +94,10 @@ public:
         std::string name(filename);
         name.append(".png");
         FILE * fp = fopen(name.c_str(), "wb");     
-        svpng(fp, 256, 256, (const unsigned char *)this->pixels.data(), 0);
+        svpng(fp, W, H, (const unsigned char *)this->pixels.data(), 0);
         fclose(fp);
     }
 
-    static void test() {
-        BitMap<W, H> bitMap;
-        for (int y = 0; y < W; y++) {
-            for (int x = 0; x < H; x++) {
-                bitMap.setPixel(y, x, Color3D(y, x, 128));
-            }
-        }
-        bitMap.setPixel(10, 100, Color3D(25, 25, 25));
-        Color3D a = bitMap.getPixel(10, 100);
-        printf("%d %d %d", a.r, a.g, a.b);
-        bitMap.save("TEST_MAPLES");
-    }
 private:
     std::array<Byte, W * H * 3> pixels;
 };
