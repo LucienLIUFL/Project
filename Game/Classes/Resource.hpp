@@ -11,17 +11,31 @@
 
 #include <string>
 
-namespace Resource {
-    const std::string BACK_PLANE = "ImageRaw/textureTransparentPack.plist";
-    const std::string BULLET_HIT_EXPLODE= "ImageRaw/textureOpaquePack.plist";
-    const std::string EXPLOSION = "ImageRaw/explosion.plist";
-    const std::string BACK_BUILD = "ImageRaw/b01.plist";
-    const std::string FLARE = "ImageRaw/flare.jpg";
+namespace Resource
+{
+    const std::string LOGO_MAPLE = "logo.png";
+    const std::string LOGO_GAMEOVER = "gameOver.png";
+    const std::string BUTTON_PLAYAGAIN = "PlayAgain1.png";
+    const std::string BUTTON_NEWGAME = "NewGame1.png";
+    const std::string BUTTON_ABOUT = "About1.png";
+    const std::string WELCOME_BACKGROUND = "loading.png";
+    const std::string BACK_PLANE = "textureTransparentPack.plist";
+    const std::string BULLET_HIT_EXPLODE= "textureOpaquePack.plist";
+    const std::string EXPLOSION = "explosion.plist";
+    const std::string BACK_BUILD = "b01.plist";
+    const std::string FLARE = "flare.jpg";
+    const std::string BACK_GROUND_PATH = "textureTransparentPack.plist";
+    const std::string BACK_BUILDS_PATH = "b01.plist";
 
-    const std::string BACK_GROUND_PATH = "ImageRaw/textureTransparentPack.plist";
-    const std::string BACK_BUILDS_PATH = "ImageRaw/b01.plist";
+    template <class T>
+    inline std::string ToString(const T & value) {
+        std::ostringstream otm;
+        otm << value;
+        return otm.str();
+    }
 
-    inline bool Load() {
+    inline bool Load()
+    {
         auto spriteFrameCache = cocos2d::SpriteFrameCache::getInstance();
         auto animationCache = cocos2d::AnimationCache::getInstance();
 
@@ -44,12 +58,16 @@ namespace Resource {
         explosion->addSpriteFrame(spriteFrameCache->getSpriteFrameByName("explode2.png"));
         explosion->addSpriteFrame(spriteFrameCache->getSpriteFrameByName("explode3.png"));
 
-        for (int i = 1; i <= 35; i++) {
+        for (int i = 1; i <= 35; i++)
+        {
             std::string name;
-            if (i < 10) {
-                name = std::string("explosion_0") + std::to_string(i) + ".png";
-            } else {
-                name = std::string("explosion_") + std::to_string(i) + ".png";
+            if (i < 10)
+            {
+                name = std::string("explosion_0") + ToString(i) + ".png";
+            }
+            else
+            {
+                name = std::string("explosion_") + ToString(i) + ".png";
             }
             explosion->addSpriteFrame(spriteFrameCache->getSpriteFrameByName(name));
         }
@@ -60,6 +78,7 @@ namespace Resource {
         
         return true;
     }
+
 }
 
 #endif /* Resource_h */

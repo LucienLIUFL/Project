@@ -15,7 +15,8 @@
 
 class Effect {
 public:
-    static cocos2d::Sprite * CreateFlare() {
+    static cocos2d::Sprite * CreateFlare()
+    {
         auto flare = cocos2d::Sprite::create(Resource::FLARE);
         auto vs = cocos2d::Director::getInstance()->getVisibleSize();
 
@@ -54,7 +55,8 @@ public:
         return flare;
     }
 
-    static cocos2d::Sprite * CreateHitOnce(const cocos2d::Vec2 & pos) {
+    static cocos2d::Sprite * CreateHitOnce(const cocos2d::Vec2 & pos)
+    {
         auto spriteFrameCache = cocos2d::SpriteFrameCache::getInstance();
         auto hit = cocos2d::Sprite::createWithSpriteFrame(spriteFrameCache->getSpriteFrameByName("hit.png"));
         auto scaleBy = cocos2d::ScaleBy::create(0.3, 1.0, 1.0);
@@ -66,7 +68,8 @@ public:
         return hit;
     }
 
-    static cocos2d::Sprite * CreateExplosionOnce(const cocos2d::Vec2 & pos) {
+    static cocos2d::Sprite * CreateExplosionOnce(const cocos2d::Vec2 & pos)
+    {
         auto spriteFrameCache = cocos2d::SpriteFrameCache::getInstance();
         auto animationCache = cocos2d::AnimationCache::getInstance();
         auto explosion = animationCache->getAnimation("EXPLOSION");

@@ -1,12 +1,12 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "WelcomeScene.hpp"
 
 USING_NS_CC;
 
-static cocos2d::Size designResolutionSize = cocos2d::Size(320, 480);
-static cocos2d::Size smallResolutionSize = cocos2d::Size(320, 480);
-static cocos2d::Size mediumResolutionSize = cocos2d::Size(768, 1024);
-static cocos2d::Size largeResolutionSize = cocos2d::Size(1536, 2048);
+static cocos2d::Size designResolutionSize = cocos2d::Size(270, 480);
+static cocos2d::Size smallResolutionSize = cocos2d::Size(270, 480);
+static cocos2d::Size mediumResolutionSize = cocos2d::Size(270, 480);
+static cocos2d::Size largeResolutionSize = cocos2d::Size(270, 480);
 
 AppDelegate::AppDelegate() {}
 
@@ -26,11 +26,13 @@ static int register_all_packages()
     return 0; //flag for packages manager
 }
 
-bool AppDelegate::applicationDidFinishLaunching() {
+bool AppDelegate::applicationDidFinishLaunching()
+{
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-    if(!glview) {
+    if(!glview)
+    {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
         glview = GLViewImpl::createWithRect("Learn",
                                             cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
@@ -50,27 +52,34 @@ bool AppDelegate::applicationDidFinishLaunching() {
     glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
     auto frameSize = glview->getFrameSize();
     // if the frame's height is larger than the height of medium size.
-    if (frameSize.height > mediumResolutionSize.height) {
+    if (frameSize.height > mediumResolutionSize.height)
+    {
         director->setContentScaleFactor(MIN(largeResolutionSize.height/designResolutionSize.height, largeResolutionSize.width/designResolutionSize.width));
-    } else if (frameSize.height > smallResolutionSize.height) { // if the frame's height is larger than the height of small size.
+    }
+    else if (frameSize.height > smallResolutionSize.height)
+    { // if the frame's height is larger than the height of small size.
         director->setContentScaleFactor(MIN(mediumResolutionSize.height/designResolutionSize.height, mediumResolutionSize.width/designResolutionSize.width));
-    } else { // if the frame's height is smaller than the height of medium size.
+    }
+    else
+    { // if the frame's height is smaller than the height of medium size.
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
 
     register_all_packages();
 
-    director->runWithScene(HelloWorld::createScene());
+    director->runWithScene(WelcomeScene::CreateScene());
 
     return true;
 }
 
 // This function will be called when the app is inactive. Note, when receiving a phone call it is invoked.
-void AppDelegate::applicationDidEnterBackground() {
+void AppDelegate::applicationDidEnterBackground()
+{
     Director::getInstance()->stopAnimation();
 }
 
 // this function will be called when the app is active again
-void AppDelegate::applicationWillEnterForeground() {
+void AppDelegate::applicationWillEnterForeground()
+{
     Director::getInstance()->startAnimation();
 }

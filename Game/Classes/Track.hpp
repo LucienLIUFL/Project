@@ -12,12 +12,15 @@
 #include "cocos2d.h"
 #include "Model.hpp"
 
-class Track {
+class Track
+{
 public:
-    static cocos2d::Sequence * Create(int flag, EnemyFighter * enemy) {
+    static cocos2d::Sequence * Create(int flag, EnemyFighter * enemy)
+    {
         assert((flag <= 5 && flag >= 0));
         cocos2d::Sequence * sequence;
-        switch (flag) {
+        switch (flag)
+        {
             case 0 :
                 sequence = CreateA(enemy);
                 break;
@@ -42,7 +45,8 @@ public:
 
 private:
 
-    static cocos2d::Sequence * CreateA(EnemyFighter * enemy) {
+    static cocos2d::Sequence * CreateA(EnemyFighter * enemy)
+    {
         auto vs = cocos2d::Director::getInstance()->getVisibleSize();
 
         cocos2d::Point begin(-10, vs.height + 10);
@@ -52,9 +56,7 @@ private:
         cocos2d::Point fourth(vs.width * 0.05, vs.height * 0.75);
         cocos2d::Point end(vs.width * 0.5, -10);
 
-        auto shoot = cocos2d::CallFunc::create([enemy] {
-            enemy->Shoot();
-        });
+        auto shoot = cocos2d::CallFunc::create([enemy] {enemy->Shoot();});
 
         enemy->setPosition(begin);
         cocos2d::Vector<cocos2d::FiniteTimeAction *> actions;
@@ -70,7 +72,8 @@ private:
         return cocos2d::Sequence::create(actions);
     }
 
-    static cocos2d::Sequence * CreateB(EnemyFighter * enemy) {
+    static cocos2d::Sequence * CreateB(EnemyFighter * enemy)
+    {
         auto vs = cocos2d::Director::getInstance()->getVisibleSize();
 
         cocos2d::Point begin(vs.width + 10, vs.height + 10);
@@ -80,9 +83,7 @@ private:
         cocos2d::Point fourth(vs.width * 0.95, vs.height * 0.75);
         cocos2d::Point end(vs.width * 0.5, -10);
 
-        auto shoot = cocos2d::CallFunc::create([enemy] {
-            enemy->Shoot();
-        });
+        auto shoot = cocos2d::CallFunc::create([enemy] {enemy->Shoot();});
 
         enemy->setPosition(begin);
         cocos2d::Vector<cocos2d::FiniteTimeAction *> actions;
@@ -97,7 +98,8 @@ private:
         return cocos2d::Sequence::create(actions);
     }
 
-    static cocos2d::Sequence * CreateC(EnemyFighter * enemy) {// not done
+    static cocos2d::Sequence * CreateC(EnemyFighter * enemy)
+    {
         auto vs = cocos2d::Director::getInstance()->getVisibleSize();
 
         cocos2d::Point begin(-10, vs.height + 10);
@@ -107,9 +109,7 @@ private:
         cocos2d::Point fourth(vs.width * 0.90, vs.height * 0.55);
         cocos2d::Point end(vs.width * 0.95, -10);
 
-        auto shoot = cocos2d::CallFunc::create([enemy] {
-            enemy->Shoot();
-        });
+        auto shoot = cocos2d::CallFunc::create([enemy] {enemy->Shoot();});
 
         enemy->setPosition(begin);
         cocos2d::Vector<cocos2d::FiniteTimeAction *> actions;
@@ -124,7 +124,8 @@ private:
         return cocos2d::Sequence::create(actions);
     }
 
-    static cocos2d::Sequence * CreateD(EnemyFighter * enemy) {// not done
+    static cocos2d::Sequence * CreateD(EnemyFighter * enemy)
+    {
         auto vs = cocos2d::Director::getInstance()->getVisibleSize();
 
         cocos2d::Point begin(vs.width + 10, vs.height + 10);
@@ -134,9 +135,7 @@ private:
         cocos2d::Point fourth(vs.width * 0.1, vs.height * 0.55);
         cocos2d::Point end(vs.width * 0.1, -10);
 
-        auto shoot = cocos2d::CallFunc::create([enemy] {
-            enemy->Shoot();
-        });
+        auto shoot = cocos2d::CallFunc::create([enemy] {enemy->Shoot();});
 
         enemy->setPosition(begin);
         cocos2d::Vector<cocos2d::FiniteTimeAction *> actions;
@@ -151,7 +150,8 @@ private:
         return cocos2d::Sequence::create(actions);
     }
 
-    static cocos2d::Sequence * CreateE(EnemyFighter * enemy) {// not done
+    static cocos2d::Sequence * CreateE(EnemyFighter * enemy)
+    {
         auto vs = cocos2d::Director::getInstance()->getVisibleSize();
 
         cocos2d::Point begin(vs.width * 0.5, vs.height + 10);
@@ -161,9 +161,7 @@ private:
         cocos2d::Point fourth(vs.width * 0.9, vs.height * 0.65);
         cocos2d::Point end(vs.width * 0.1, -10);
 
-        auto shoot = cocos2d::CallFunc::create([enemy] {
-            enemy->Shoot();
-        });
+        auto shoot = cocos2d::CallFunc::create([enemy] {enemy->Shoot();});
 
         enemy->setPosition(begin);
         cocos2d::Vector<cocos2d::FiniteTimeAction *> actions;
@@ -180,7 +178,8 @@ private:
         return cocos2d::Sequence::create(actions);
     }
 
-    static cocos2d::Sequence * CreateF(EnemyFighter * enemy) {// not done
+    static cocos2d::Sequence * CreateF(EnemyFighter * enemy)
+    {
         auto vs = cocos2d::Director::getInstance()->getVisibleSize();
 
         cocos2d::Point begin(-10, -10);
@@ -189,9 +188,7 @@ private:
         cocos2d::Point third(vs.width * 0.3, vs.height * 0.85);
         cocos2d::Point end(vs.width + 10, -10);
 
-        auto shoot = cocos2d::CallFunc::create([enemy] {
-            enemy->Shoot();
-        });
+        auto shoot = cocos2d::CallFunc::create([enemy] {enemy->Shoot();});
 
         enemy->setPosition(begin);
         cocos2d::Vector<cocos2d::FiniteTimeAction *> actions;
