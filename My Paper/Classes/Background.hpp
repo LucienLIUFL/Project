@@ -41,7 +41,7 @@ public:
         this->builds.pushBack(cocos2d::Sprite::createWithSpriteFrame(spriteFrameCache->getSpriteFrameByName("lvl1_map2.png")));
         this->builds.pushBack(cocos2d::Sprite::createWithSpriteFrame(spriteFrameCache->getSpriteFrameByName("lvl1_map3.png")));
         this->builds.pushBack(cocos2d::Sprite::createWithSpriteFrame(spriteFrameCache->getSpriteFrameByName("lvl1_map4.png")));
-        
+    
         return true;
     }
 
