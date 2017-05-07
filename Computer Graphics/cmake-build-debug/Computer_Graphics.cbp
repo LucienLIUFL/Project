@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Computer_Graphics"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Computer_Graphics">
+				<Option output="/Users/maples/Projects/Computer Graphics/cmake-build-debug/Computer_Graphics" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 Computer_Graphics"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Computer_Graphics/fast">
+				<Option output="/Users/maples/Projects/Computer Graphics/cmake-build-debug/Computer_Graphics" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 Computer_Graphics/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/maples/Projects/Computer\ Graphics/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/Algorithm/Brush.cpp">
+			<Option target="Computer_Graphics"/>
+		</Unit>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/Algorithm/Brush.h">
+			<Option target="Computer_Graphics"/>
+		</Unit>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/Main.cpp">
+			<Option target="Computer_Graphics"/>
+		</Unit>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/Model/Object.cpp">
+			<Option target="Computer_Graphics"/>
+		</Unit>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/Model/Object.h">
+			<Option target="Computer_Graphics"/>
+		</Unit>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/Model/Point.cpp">
+			<Option target="Computer_Graphics"/>
+		</Unit>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/Model/Point.h">
+			<Option target="Computer_Graphics"/>
+		</Unit>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/Model/Vector.cpp">
+			<Option target="Computer_Graphics"/>
+		</Unit>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/Model/Vector.h">
+			<Option target="Computer_Graphics"/>
+		</Unit>
+		<Unit filename="/Users/maples/Projects/Computer Graphics/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

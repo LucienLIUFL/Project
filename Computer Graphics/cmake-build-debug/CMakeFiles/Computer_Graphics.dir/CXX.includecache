@@ -1,0 +1,66 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/maples/Projects/Computer Graphics/Algorithm/Brush.cpp
+GLUT/glut.h
+-
+Brush.h
+/Users/maples/Projects/Computer Graphics/Algorithm/Brush.h
+
+/Users/maples/Projects/Computer Graphics/Algorithm/Brush.h
+array
+-
+OpenGL/OpenGL.h
+-
+
+/Users/maples/Projects/Computer Graphics/Algorithm/MaplesPNG.hpp
+stdio.h
+-
+cstdlib
+-
+cstdint
+-
+array
+-
+string
+-
+
+/Users/maples/Projects/Computer Graphics/Main.cpp
+cmath
+-
+iostream
+-
+Algorithm/MaplesPNG.hpp
+/Users/maples/Projects/Computer Graphics/Algorithm/MaplesPNG.hpp
+
+/Users/maples/Projects/Computer Graphics/Model/Object.cpp
+Object.h
+/Users/maples/Projects/Computer Graphics/Model/Object.h
+
+/Users/maples/Projects/Computer Graphics/Model/Object.h
+
+/Users/maples/Projects/Computer Graphics/Model/Point.cpp
+Point.h
+/Users/maples/Projects/Computer Graphics/Model/Point.h
+
+/Users/maples/Projects/Computer Graphics/Model/Point.h
+Object.h
+/Users/maples/Projects/Computer Graphics/Model/Object.h
+array
+-
+
+/Users/maples/Projects/Computer Graphics/Model/Vector.cpp
+Vector.h
+/Users/maples/Projects/Computer Graphics/Model/Vector.h
+
+/Users/maples/Projects/Computer Graphics/Model/Vector.h
+array
+-
+Object.h
+/Users/maples/Projects/Computer Graphics/Model/Object.h
+
