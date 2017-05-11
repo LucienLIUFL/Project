@@ -25,9 +25,6 @@ secondImage.Pos.Y--;
 if secondImage.Pos OutOf visibleSize:
     secondImage.Pos = Up to firstImage.Pos;
 ```
-流程图
-
-效果图
 
 使用的数据结构
 两张背景精灵元素的数组, 在当前背景层实例化时创建;
@@ -60,8 +57,6 @@ if secondImage.Pos OutOf visibleSize:
 
 CheckAndRemove(All_Buildings); 
 ```
-
-流程图
 
 使用的数据结构
 四个创建好的精灵元素. 在当前背景层实例化时创建.

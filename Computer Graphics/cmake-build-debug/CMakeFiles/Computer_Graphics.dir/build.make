@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/maples/Projects/Computer Graphics"
+CMAKE_SOURCE_DIR = "/Users/maples/Documents/Project/Computer Graphics"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/maples/Projects/Computer Graphics/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Computer_Graphics.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/Computer_Graphics.dir/flags.make
 
 CMakeFiles/Computer_Graphics.dir/Main.cpp.o: CMakeFiles/Computer_Graphics.dir/flags.make
 CMakeFiles/Computer_Graphics.dir/Main.cpp.o: ../Main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Computer_Graphics.dir/Main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Computer_Graphics.dir/Main.cpp.o -c "/Users/maples/Projects/Computer Graphics/Main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Computer_Graphics.dir/Main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Computer_Graphics.dir/Main.cpp.o -c "/Users/maples/Documents/Project/Computer Graphics/Main.cpp"
 
 CMakeFiles/Computer_Graphics.dir/Main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Computer_Graphics.dir/Main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/maples/Projects/Computer Graphics/Main.cpp" > CMakeFiles/Computer_Graphics.dir/Main.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/maples/Documents/Project/Computer Graphics/Main.cpp" > CMakeFiles/Computer_Graphics.dir/Main.cpp.i
 
 CMakeFiles/Computer_Graphics.dir/Main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Computer_Graphics.dir/Main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/maples/Projects/Computer Graphics/Main.cpp" -o CMakeFiles/Computer_Graphics.dir/Main.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/maples/Documents/Project/Computer Graphics/Main.cpp" -o CMakeFiles/Computer_Graphics.dir/Main.cpp.s
 
 CMakeFiles/Computer_Graphics.dir/Main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/Computer_Graphics.dir/Main.cpp.o.provides.build: CMakeFiles/Computer_
 
 CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o: CMakeFiles/Computer_Graphics.dir/flags.make
 CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o: ../Model/Object.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o -c "/Users/maples/Projects/Computer Graphics/Model/Object.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o -c "/Users/maples/Documents/Project/Computer Graphics/Model/Object.cpp"
 
 CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/maples/Projects/Computer Graphics/Model/Object.cpp" > CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/maples/Documents/Project/Computer Graphics/Model/Object.cpp" > CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.i
 
 CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/maples/Projects/Computer Graphics/Model/Object.cpp" -o CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/maples/Documents/Project/Computer Graphics/Model/Object.cpp" -o CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.s
 
 CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o.provides.build: CMakeFiles/C
 
 CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o: CMakeFiles/Computer_Graphics.dir/flags.make
 CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o: ../Model/Point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o -c "/Users/maples/Projects/Computer Graphics/Model/Point.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o -c "/Users/maples/Documents/Project/Computer Graphics/Model/Point.cpp"
 
 CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/maples/Projects/Computer Graphics/Model/Point.cpp" > CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/maples/Documents/Project/Computer Graphics/Model/Point.cpp" > CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.i
 
 CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/maples/Projects/Computer Graphics/Model/Point.cpp" -o CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/maples/Documents/Project/Computer Graphics/Model/Point.cpp" -o CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.s
 
 CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o.requires:
 
@@ -129,42 +129,18 @@ CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o.provides: CMakeFiles/Computer
 CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o.provides.build: CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o
 
 
-CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o: CMakeFiles/Computer_Graphics.dir/flags.make
-CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o: ../Model/Vector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o -c "/Users/maples/Projects/Computer Graphics/Model/Vector.cpp"
-
-CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/maples/Projects/Computer Graphics/Model/Vector.cpp" > CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.i
-
-CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/maples/Projects/Computer Graphics/Model/Vector.cpp" -o CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.s
-
-CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o.requires:
-
-.PHONY : CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o.requires
-
-CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o.provides: CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Computer_Graphics.dir/build.make CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o.provides.build
-.PHONY : CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o.provides
-
-CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o.provides.build: CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o
-
-
 CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o: CMakeFiles/Computer_Graphics.dir/flags.make
 CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o: ../Algorithm/Brush.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o -c "/Users/maples/Projects/Computer Graphics/Algorithm/Brush.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o -c "/Users/maples/Documents/Project/Computer Graphics/Algorithm/Brush.cpp"
 
 CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/maples/Projects/Computer Graphics/Algorithm/Brush.cpp" > CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/maples/Documents/Project/Computer Graphics/Algorithm/Brush.cpp" > CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.i
 
 CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/maples/Projects/Computer Graphics/Algorithm/Brush.cpp" -o CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/maples/Documents/Project/Computer Graphics/Algorithm/Brush.cpp" -o CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.s
 
 CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o.requires:
 
@@ -182,7 +158,6 @@ Computer_Graphics_OBJECTS = \
 "CMakeFiles/Computer_Graphics.dir/Main.cpp.o" \
 "CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o" \
 "CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o" \
-"CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o" \
 "CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o"
 
 # External object files for target Computer_Graphics
@@ -191,11 +166,10 @@ Computer_Graphics_EXTERNAL_OBJECTS =
 Computer_Graphics: CMakeFiles/Computer_Graphics.dir/Main.cpp.o
 Computer_Graphics: CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o
 Computer_Graphics: CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o
-Computer_Graphics: CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o
 Computer_Graphics: CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o
 Computer_Graphics: CMakeFiles/Computer_Graphics.dir/build.make
 Computer_Graphics: CMakeFiles/Computer_Graphics.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Computer_Graphics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Computer_Graphics"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Computer_Graphics.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -206,7 +180,6 @@ CMakeFiles/Computer_Graphics.dir/build: Computer_Graphics
 CMakeFiles/Computer_Graphics.dir/requires: CMakeFiles/Computer_Graphics.dir/Main.cpp.o.requires
 CMakeFiles/Computer_Graphics.dir/requires: CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o.requires
 CMakeFiles/Computer_Graphics.dir/requires: CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o.requires
-CMakeFiles/Computer_Graphics.dir/requires: CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o.requires
 CMakeFiles/Computer_Graphics.dir/requires: CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o.requires
 
 .PHONY : CMakeFiles/Computer_Graphics.dir/requires
@@ -216,6 +189,6 @@ CMakeFiles/Computer_Graphics.dir/clean:
 .PHONY : CMakeFiles/Computer_Graphics.dir/clean
 
 CMakeFiles/Computer_Graphics.dir/depend:
-	cd "/Users/maples/Projects/Computer Graphics/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/maples/Projects/Computer Graphics" "/Users/maples/Projects/Computer Graphics" "/Users/maples/Projects/Computer Graphics/cmake-build-debug" "/Users/maples/Projects/Computer Graphics/cmake-build-debug" "/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/maples/Documents/Project/Computer Graphics" "/Users/maples/Documents/Project/Computer Graphics" "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug" "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug" "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Computer_Graphics.dir/depend
 

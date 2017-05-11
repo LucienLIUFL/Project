@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/maples/Projects/Computer Graphics"
+CMAKE_SOURCE_DIR = "/Users/maples/Documents/Project/Computer Graphics"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/maples/Projects/Computer Graphics/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles" "/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles" "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -231,33 +231,6 @@ Model/Point.cpp.s:
 	$(MAKE) -f CMakeFiles/Computer_Graphics.dir/build.make CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.s
 .PHONY : Model/Point.cpp.s
 
-Model/Vector.o: Model/Vector.cpp.o
-
-.PHONY : Model/Vector.o
-
-# target to build an object file
-Model/Vector.cpp.o:
-	$(MAKE) -f CMakeFiles/Computer_Graphics.dir/build.make CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o
-.PHONY : Model/Vector.cpp.o
-
-Model/Vector.i: Model/Vector.cpp.i
-
-.PHONY : Model/Vector.i
-
-# target to preprocess a source file
-Model/Vector.cpp.i:
-	$(MAKE) -f CMakeFiles/Computer_Graphics.dir/build.make CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.i
-.PHONY : Model/Vector.cpp.i
-
-Model/Vector.s: Model/Vector.cpp.s
-
-.PHONY : Model/Vector.s
-
-# target to generate assembly for a file
-Model/Vector.cpp.s:
-	$(MAKE) -f CMakeFiles/Computer_Graphics.dir/build.make CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.s
-.PHONY : Model/Vector.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -279,9 +252,6 @@ help:
 	@echo "... Model/Point.o"
 	@echo "... Model/Point.i"
 	@echo "... Model/Point.s"
-	@echo "... Model/Vector.o"
-	@echo "... Model/Vector.i"
-	@echo "... Model/Vector.s"
 .PHONY : help
 
 

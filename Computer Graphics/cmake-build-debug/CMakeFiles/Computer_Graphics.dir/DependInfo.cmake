@@ -4,11 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/maples/Projects/Computer Graphics/Algorithm/Brush.cpp" "/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o"
-  "/Users/maples/Projects/Computer Graphics/Main.cpp" "/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/Main.cpp.o"
-  "/Users/maples/Projects/Computer Graphics/Model/Object.cpp" "/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o"
-  "/Users/maples/Projects/Computer Graphics/Model/Point.cpp" "/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o"
-  "/Users/maples/Projects/Computer Graphics/Model/Vector.cpp" "/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/Model/Vector.cpp.o"
+  "/Users/maples/Documents/Project/Computer Graphics/Algorithm/Brush.cpp" "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/Algorithm/Brush.cpp.o"
+  "/Users/maples/Documents/Project/Computer Graphics/Main.cpp" "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/Main.cpp.o"
+  "/Users/maples/Documents/Project/Computer Graphics/Model/Object.cpp" "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/Model/Object.cpp.o"
+  "/Users/maples/Documents/Project/Computer Graphics/Model/Point.cpp" "/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir/Model/Point.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

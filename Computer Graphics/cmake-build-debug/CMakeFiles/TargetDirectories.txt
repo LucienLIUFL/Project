@@ -1,3 +1,3 @@
-/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/maples/Projects/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir
+/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/maples/Documents/Project/Computer Graphics/cmake-build-debug/CMakeFiles/Computer_Graphics.dir
