@@ -1,3 +1,0 @@
-# GraphicsLib
-## API
-- 
